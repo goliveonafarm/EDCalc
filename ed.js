@@ -1,7 +1,6 @@
 let inputID = null;
 let ed = 0;
 let armorName = null;
-let output = null;
 let ethValue = 1.0;
 let isEthCheckBox = document.getElementById("isEthCheckbox");
 let isSup = 0;
@@ -40,9 +39,9 @@ function setED(_ed) {
 }
 
 function calcDef() {
-
-    if (ed !== null && inputID !== null) {
-        output = Math.floor((((parseFloat(inputID) + isSup) * ethValue) * (1 + (parseFloat(ed) * 0.01))));
+    
+    if (inputID !== null) {
+        let output = Math.floor((((parseFloat(inputID) + isSup) * ethValue) * (1 + (parseFloat(ed) * 0.01))));
         document.getElementById("outputID").innerText = "Defense: " + output;
 
     }
