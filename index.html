@@ -6,7 +6,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-  <script src="ed.js" async></script> 
+  <script src="ed.js" async></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,40 +24,26 @@
               <div id="chooseArm">Choose Armor</div>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li class="dropdown-item" href="#" id="001">----Elite----</li>
-              <li class="dropdown-item" href="#" id="600" onclick="setInputID(this.id)">Sacred Armor
-              </li>
-              <li class="dropdown-item" href="#" id="557" onclick="setInputID(this.id)">Shadow Plate
-              </li>
-              <li class="dropdown-item" href="#" id="541" onclick="setInputID(this.id)">Lacquered Plate
-              </li>
-              <li class="dropdown-item" href="#" id="530" onclick="setInputID(this.id)">Hellforge Plate
-              </li>
-              <li class="dropdown-item" href="#" id="523" onclick="setInputID(this.id)">Kraken Shell
-              </li>
-              <li class="dropdown-item" href="#" id="524" onclick="setInputID(this.id)">Archon Plate
-              </li>
-              <li class="dropdown-item" href="#" id="517" onclick="setInputID(this.id)">Balrog Skin
-              </li>
-              <li class="dropdown-item" href="#" id="505" onclick="setInputID(this.id)">Boneweave</li>
-              <li class="dropdown-item" href="#" id="501" onclick="setInputID(this.id)">Great Hauberk
-              </li>
-              <li class="dropdown-item" href="#" id="496" onclick="setInputID(this.id)">Loricated Mail
-              </li>
-              <li class="dropdown-item" href="#" id="489" onclick="setInputID(this.id)">Diamond Mail
-              </li>
-              <li class="dropdown-item" href="#" id="481" onclick="setInputID(this.id)">Wire Fleece
-              </li>
-              <li class="dropdown-item" href="#" id="474" onclick="setInputID(this.id)">Scarab Husk
-              </li>
+              <li class="dropdown-item" href="#" id="467" onclick="setInputID(this.id)">Dusk Shroud</li>
               <li class="dropdown-item" href="#" id="470" onclick="setInputID(this.id)">Wyrmhide</li>
-              <li class="dropdown-item" href="#" id="467" onclick="setInputID(this.id)">Dusk Shroud
-              </li>
+              <li class="dropdown-item" href="#" id="474" onclick="setInputID(this.id)">Scarab Husk</li>
+              <li class="dropdown-item" href="#" id="481" onclick="setInputID(this.id)">Wire Fleece</li>
+              <li class="dropdown-item" href="#" id="489" onclick="setInputID(this.id)">Diamond Mail</li>
+              <li class="dropdown-item" href="#" id="496" onclick="setInputID(this.id)">Loricated Mail</li>
+              <li class="dropdown-item" href="#" id="501" onclick="setInputID(this.id)">Great Hauberk</li>
+              <li class="dropdown-item" href="#" id="505" onclick="setInputID(this.id)">Boneweave</li>
+              <li class="dropdown-item" href="#" id="517" onclick="setInputID(this.id)">Balrog Skin</li>
+              <li class="dropdown-item" href="#" id="524" onclick="setInputID(this.id)">Archon Plate</li>
+              <li class="dropdown-item" href="#" id="523" onclick="setInputID(this.id)">Kraken Shell</li>
+              <li class="dropdown-item" href="#" id="530" onclick="setInputID(this.id)">Hellforge Plate</li>
+              <li class="dropdown-item" href="#" id="541" onclick="setInputID(this.id)">Lacquered Plate</li>
+              <li class="dropdown-item" href="#" id="557" onclick="setInputID(this.id)">Shadow Plate</li>
+              <li class="dropdown-item" href="#" id="600" onclick="setInputID(this.id)">Sacred Armor</li>
+              <div class="dropdown-divider"></div>
+              <li class="dropdown-item" href="#" id="261" onclick="setInputID(this.id)">Mage Plate</li>
             </ul>
           </div>
         </div>
-
-        
 
         <div class="col-md">
           <div class="dropdown">
@@ -86,13 +72,30 @@
           </div>
         </div>
       </div>
-      <div style="padding-top:50px" class="row">
+
+      <div class="row">
+        <div class="col-md">
+
+        <h3 style="padding-top:20px">
+          <input class="form-check-input" type="checkbox" value="" id="isEthCheckbox" onclick="setEth()">
+          <label class="form-check-label" for="flexCheckDefault">
+            Ethereal
+          </label>
+        </h3>
+
+        </div>
+      </div>
+
+      <div style="padding-top:25px" class="row">
         <div class="col-sm">
           <h3 id="outputID"></h3>
         </div>
       </div>
+
+
     </div>
   </div>
 
 </body>
+
 </html>
