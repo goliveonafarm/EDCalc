@@ -18,7 +18,8 @@ function setED(_ed) {
     if(ed==0){
     document.getElementById("edTag").innerText = "Max def (non ED)";
     }
-    else (document.getElementById("edTag").innerText = ed + "% Enhanced Defense");
+    else
+    {(document.getElementById("edTag").innerText = ed + "% Enhanced Defense")};
     calcDef()
 }
 
