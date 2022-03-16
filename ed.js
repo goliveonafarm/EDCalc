@@ -1,10 +1,10 @@
 let inputID = null;
-let ed = null;
+let ed = 0;
 let armorName = null;
 let output = null;
 let ethValue = 1.0;
 let isEthCheckBox = document.getElementById("isEthCheckbox");
-let isSup = 1;
+let isSup = 0;
 
 function setEth() {
     if (isEthCheckBox.checked == true) {
@@ -29,7 +29,7 @@ function setED(_ed) {
     ed = _ed;
 
     if (ed == 0) {
-        document.getElementById("edTag").innerText = "Max def (non ED)";
+        document.getElementById("edTag").innerText = "Max defense - non ED%";
         isSup = 0;
     }
     else {
@@ -44,6 +44,6 @@ function calcDef() {
     if (ed !== null && inputID !== null) {
         output = Math.floor((((parseFloat(inputID) + isSup) * ethValue) * (1 + (parseFloat(ed) * 0.01))));
         document.getElementById("outputID").innerText = "Defense: " + output;
-        
+
     }
 }
