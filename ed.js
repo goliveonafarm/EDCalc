@@ -52,6 +52,21 @@ function calcDef() {
     setText();
 }
 
+function setText() {
+    document.getElementById("outputText").value = `${armorName}:
+  - Defense: ${output}${socketString}
+    Ethereal: ${isEthCheckBox.checked}`;
+
+}
+
+function copyText() {
+    let copiedText = document.getElementById("outputText");
+    copiedText.select();
+    document.execCommand("copy");
+
+    document.getElementById("btnCopy").innerText = "Copied!"
+}
+
 function genSocketString() {
     socketString = "";
 
@@ -66,7 +81,7 @@ function genSocketString() {
 
     if (btnCheck0.checked == true) {
         flag = true;
-        arr.push("1");
+        arr.push("0");
     }
     if (btnCheck2.checked == true) {
         if (flag == true) {
@@ -90,20 +105,21 @@ function genSocketString() {
         arr.push("4");
     }
 
+    if(flag == false){
+
+    }
+
     socketString = socketString.concat(...arr);
+    socketString = `
+    Sockets: [${socketString}]`;
+
+    if(flag == false){
+        socketString = ``;
+    }
+
     setText();
 }
 
-function setText() {
-    document.getElementById("outputText").value = `${armorName}:
-  - Defense: ${output}
-    Sockets: [${socketString}]
-    Ethereal: ${isEthCheckBox.checked}`;
-
-}
-
-function copyText() {
-    let copiedText = document.getElementById("outputText");
-    copiedText.select();
-    document.execCommand("copy");
+function setBtnTextToCopy(){
+    document.getElementById("btnCopy").innerText = "Copy to clipboard";
 }

@@ -17,7 +17,7 @@
   <div class="d-flex justify-content-center">
     <div style="padding-top:100px" class="container">
       <h4>Choose an armor and defense modifier to see the calculated defense</h4>
-      <div class="row">
+      <div class="row" onclick="setBtnTextToCopy()">
         <div class="col-md">
           <div class="dropdown">
             <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" onclick="setBtnTextToCopy()">
         <div class="col-md">
 
           <h3 style="padding-top:20px">
@@ -93,10 +93,10 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" onclick="setBtnTextToCopy()">
         <div class="col-md">
 
-          <h5 style="padding-top:20px">
+          <h6 style="padding-top:20px">
             <input class="form-check-input" type="checkbox" value="" id="0osCheckbox" onclick="genSocketString()">
             <label class="form-check-label" for="flexCheckDefault">
               0 socket
@@ -113,22 +113,22 @@
             <label class="form-check-label" for="flexCheckDefault">
               4 socket
             </label>
-          </h5>
+          </h6>
 
         </div>
       </div>
 
-      <div style="padding-top:25px" class="row">
+      <div style="padding-top:10px" class="row">
 
         <div class="col-sm">
           <div class="form-group">
-            <label for="outputText">Output yaml prop:</label>
+            <label for="outputText">.yaml item rule:</label>
             <textarea class="form-control" id="outputText" rows="6"></textarea>
           </div>
         </div>
 
-        <div class="col-sm">
-          <button type="button" class="btn btn-primary" onclick="copyText()">Copy</button>
+        <div class="col-sm" style="padding-top:50px">
+          <button type="button" class="btn btn-primary" id="btnCopy" onclick="copyText()">Copy to clipboard</button>
         </div>
       </div>
 
