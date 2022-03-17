@@ -4,6 +4,10 @@ let armorName = null;
 let ethValue = 1.0;
 let isEthCheckBox = document.getElementById("isEthCheckbox");
 let isSup = 0;
+let output = null;
+
+let socketString = "";
+
 
 function setEth() {
     if (isEthCheckBox.checked == true) {
@@ -39,10 +43,67 @@ function setED(_ed) {
 }
 
 function calcDef() {
-    
+
     if (inputID !== null) {
-        let output = Math.floor((((parseFloat(inputID) + isSup) * ethValue) * (1 + (parseFloat(ed) * 0.01))));
+        output = Math.floor((((parseFloat(inputID) + isSup) * ethValue) * (1 + (parseFloat(ed) * 0.01))));
         document.getElementById("outputID").innerText = "Defense: " + output;
 
     }
+    setText();
+}
+
+function genSocketString() {
+    socketString = "";
+
+    let btnCheck0 = document.getElementById("0osCheckbox");
+    let btnCheck2 = document.getElementById("2osCheckbox");
+    let btnCheck3 = document.getElementById("3osCheckbox");
+    let btnCheck4 = document.getElementById("4osCheckbox");
+
+    let flag = false;
+
+    let arr = [];
+
+    if (btnCheck0.checked == true) {
+        flag = true;
+        arr.push("1");
+    }
+    if (btnCheck2.checked == true) {
+        if (flag == true) {
+            arr.push(", ");
+        }
+        flag = true;
+        arr.push("2");
+    }
+    if (btnCheck3.checked == true) {
+        if (flag == true) {
+            arr.push(", ");
+        }
+        flag = true;
+        arr.push("3");
+    }
+    if (btnCheck4.checked == true) {
+        if (flag == true) {
+            arr.push(", ");
+        }
+        flag = true;
+        arr.push("4");
+    }
+
+    socketString = socketString.concat(...arr);
+    setText();
+}
+
+function setText() {
+    document.getElementById("outputText").value = `${armorName}:
+  - Defense: ${output}
+    Sockets: [${socketString}]
+    Ethereal: ${isEthCheckBox.checked}`;
+
+}
+
+function copyText() {
+    let copiedText = document.getElementById("outputText");
+    copiedText.select();
+    document.execCommand("copy");
 }

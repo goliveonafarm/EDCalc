@@ -93,6 +93,45 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-md">
+
+          <h5 style="padding-top:20px">
+            <input class="form-check-input" type="checkbox" value="" id="0osCheckbox" onclick="genSocketString()">
+            <label class="form-check-label" for="flexCheckDefault">
+              0 socket
+            </label>
+            <input class="form-check-input" type="checkbox" value="" id="2osCheckbox" onclick="genSocketString()">
+            <label class="form-check-label" for="flexCheckDefault">
+              2 socket
+            </label>
+            <input class="form-check-input" type="checkbox" value="" id="3osCheckbox" onclick="genSocketString()">
+            <label class="form-check-label" for="flexCheckDefault">
+              3 socket
+            </label>
+            <input class="form-check-input" type="checkbox" value="" id="4osCheckbox" onclick="genSocketString()">
+            <label class="form-check-label" for="flexCheckDefault">
+              4 socket
+            </label>
+          </h5>
+
+        </div>
+      </div>
+
+      <div style="padding-top:25px" class="row">
+
+        <div class="col-sm">
+          <div class="form-group">
+            <label for="outputText">Output yaml prop:</label>
+            <textarea class="form-control" id="outputText" rows="6"></textarea>
+          </div>
+        </div>
+
+        <div class="col-sm">
+          <button type="button" class="btn btn-primary" onclick="copyText()">Copy</button>
+        </div>
+      </div>
+
 
     </div>
   </div>
