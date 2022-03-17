@@ -113,6 +113,10 @@
             <label class="form-check-label" for="flexCheckDefault">
               4 socket
             </label>
+            <input class="form-check-input" type="checkbox" value="" id="playSoundCheckBox" onclick="playSound()">
+            <label class="form-check-label" for="flexCheckDefault">
+              play sound = false
+            </label>
           </h6>
 
         </div>
@@ -120,9 +124,9 @@
 
       <div style="padding-top:10px" class="row">
 
-        <div class="col-sm">
+        <div class="col-sm" onclick="setBtnTextToCopy()">
           <div class="form-group">
-            <label for="outputText">.yaml item rule:</label>
+            <label for="outputText">ItemFilter.yaml rule:</label>
             <textarea class="form-control" id="outputText" rows="6"></textarea>
           </div>
         </div>

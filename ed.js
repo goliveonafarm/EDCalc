@@ -7,6 +7,7 @@ let isSup = 0;
 let output = null;
 
 let socketString = "";
+let playSoundFalse = "";
 
 
 function setEth() {
@@ -53,9 +54,10 @@ function calcDef() {
 }
 
 function setText() {
-    document.getElementById("outputText").value = `${armorName}:
-  - Defense: ${output}${socketString}
-    Ethereal: ${isEthCheckBox.checked}`;
+    let buildString = `${armorName}:
+    - Defense: ${output}${socketString}
+      Ethereal: ${isEthCheckBox.checked}${playSoundFalse}`;
+    document.getElementById("outputText").value = buildString;
 
 }
 
@@ -111,7 +113,7 @@ function genSocketString() {
 
     socketString = socketString.concat(...arr);
     socketString = `
-    Sockets: [${socketString}]`;
+      Sockets: [${socketString}]`;
 
     if(flag == false){
         socketString = ``;
@@ -122,4 +124,15 @@ function genSocketString() {
 
 function setBtnTextToCopy(){
     document.getElementById("btnCopy").innerText = "Copy to clipboard";
+}
+
+function playSound(){
+    if (document.getElementById("playSoundCheckBox").checked == true){
+        playSoundFalse = `\n      PlaySoundOnDrop: false`
+    }
+    else{
+        playSoundFalse = ``;
+    }
+
+    setText();
 }
