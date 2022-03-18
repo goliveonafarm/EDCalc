@@ -107,30 +107,26 @@ function genSocketString() {
         arr.push("4");
     }
 
-    if(flag == false){
-
-    }
-
     socketString = socketString.concat(...arr);
     socketString = `
     Sockets: [${socketString}]`;
 
-    if(flag == false){
+    if (flag == false) {
         socketString = ``;
     }
 
     setText();
 }
 
-function setBtnTextToCopy(){
+function setBtnTextToCopy() {
     document.getElementById("btnCopy").innerText = "Copy to clipboard";
 }
 
-function playSound(){
-    if (document.getElementById("playSoundCheckBox").checked == true){
+function playSound() {
+    if (document.getElementById("playSoundCheckBox").checked == true) {
         playSoundFalse = `\n    PlaySoundOnDrop: false`
     }
-    else{
+    else {
         playSoundFalse = ``;
     }
 
