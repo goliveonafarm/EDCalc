@@ -18,6 +18,7 @@ let buildTradeString = ``;
 let tradeList = ``;
 let defenseStr = ``;
 let btnItemClassIDCounter = 0;
+let firstSymbolInTrade = ``;
 let lblOutPut = document.getElementById("lblOutPutSellStringID");
 let outputTradeTextBox = document.getElementById("outputTradeText");
 
@@ -248,7 +249,7 @@ setContent();
 
 
 
-function generateUniqString(props, item) {
+function generateUniqString(props) {
     if (props.loot) {
         if (props.type !== null) {
             buildUniqString += `\n  ${props.type}:\n    `
@@ -260,8 +261,13 @@ function generateUniqString(props, item) {
         buildUniqString += `${props.attrName}: `;
         buildUniqString += `${props.userValue}`;
     }
-    buildTradeString += ` ${props.attrName} `;
-    buildTradeString += ` ${props.userValue} /`;
+
+    buildTradeString += `${firstSymbolInTrade} ${props.attrName} `;
+    buildTradeString += ` ${props.userValue} `;
+
+    if(firstSymbolInTrade == ``){
+        firstSymbolInTrade = `/`
+    }
 
     //Last step for moving information to lbl
     lblOutPut.innerHTML = buildTradeString;
@@ -379,7 +385,7 @@ function setOptionTags(classItemID, itemID) {
     }
 
     document.getElementById("outputText").value = buildUniqString;
-
+    firstSymbolInTrade = ``;
 }
 
 function genItemListBtn(classItemID) {
