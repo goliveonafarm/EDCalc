@@ -1,28 +1,25 @@
+import uniqs from "./uniqProps.js";
+let scopeItem = [];
 let inputID = null;
 let inputIDEth = null;
 let ed = 0;
 let armorName = null;
 let ethValue = 1.0;
-let isEthCheckBox = document.getElementById("isEthCheckbox");
 let isSup = 0;
 let output = null;
 let stringifyOutputDefense = ``;
 let stringifyOutputEth = ``;
-
 let socketString = "";
 let playSoundFalse = "";
-
 let btnItemListIDCounter = 0;
 let txtBoxRowsIDCounter = 0;
 let buildUniqString = ``;
 let buildTradeString = ``;
 let tradeList = ``;
-
 let defenseStr = ``;
-
+let btnItemClassIDCounter = 0;
 let lblOutPut = document.getElementById("lblOutPutSellStringID");
 let outputTradeTextBox = document.getElementById("outputTradeText");
-
 
 function clearLblTrade() {
     lblOutPut.innerHTML = ``;
@@ -184,8 +181,6 @@ function playSound() {
     setText();
 }
 
-
-
 document.querySelectorAll(".setInputIDClass").forEach(item => {
     item.addEventListener('click', run => {
         setInputID(item.id);
@@ -251,63 +246,60 @@ document.getElementById('btnCopyClearFromClipID').addEventListener("click", func
 
 setContent();
 
-import uniqs from "./uniqProps.js";
-
-
-//[array of assasin katar objects]]
 
 
 function generateUniqString(props, item) {
+    if (props.loot) {
+        if (props.type !== null) {
+            buildUniqString += `\n  ${props.type}:\n    `
+        }
+        if (props.type == null) {
+            buildUniqString += `\n  `
+        }
 
-    if (props.type !== null) {
-        buildUniqString += `\n  ${props.type}:\n    `
-
+        buildUniqString += `${props.attrName}: `;
+        buildUniqString += `${props.userValue}`;
     }
-    if (props.type == null) {
-        buildUniqString += `\n  `
-
-    }
-
-    buildUniqString += `${props.attrName}: `;
-    buildUniqString += `${props.userValue}`;
-
-    buildTradeString += `/ ${props.attrName} `;
-    buildTradeString += ` ${props.userValue} `;
+    buildTradeString += ` ${props.attrName} `;
+    buildTradeString += ` ${props.userValue} /`;
 
     //Last step for moving information to lbl
     lblOutPut.innerHTML = buildTradeString;
 }
 
+//its sloppy but using these vars for recursion to help clear fields when clicking buttons
 let grab = null;
 let grab2 = null;
+let grab3 = null;
+
 
 function setOptionTags(classItemID, itemID) {
     clearLblTrade();
     document.getElementById("outputText").value = ``;
     buildUniqString = `${uniqs[classItemID][itemID].base}:\n- Qualities: unique`
 
-    buildTradeString += `${uniqs[classItemID][itemID].name} `;
-    let scopeItem = uniqs[classItemID][itemID];
+    buildTradeString += `${uniqs[classItemID][itemID].name} - `;
+    scopeItem = uniqs[classItemID][itemID];
     const deleteTheseElements = document.querySelectorAll(".removableTagsClass");
     for (const elem of deleteTheseElements) {
         elem.remove();
     }
 
-    if (scopeItem.hasOwnProperty('maxDef')) {
-        defenseStr = ` Defense ${scopeItem.maxDef} `
+    let myNum = ((parseFloat(scopeItem.baseDef) + 1) * ((parseFloat(scopeItem.ed) + 100) / 100));
+    myNum = Math.floor(myNum);
+    console.log(`scopeItem.ed: ${scopeItem.ed} ${scopeItem.baseDef}`);
+    //Defense is controlled here
+    if (scopeItem.hasOwnProperty('baseDef')) {
+        defenseStr = `Defense ${myNum} /`
     }
 
     buildTradeString += defenseStr;
 
-    if (scopeItem.hasOwnProperty('maxDef')) {
-        buildUniqString += `\n  Defense: ${scopeItem.maxDef}`
+    if (scopeItem.hasOwnProperty('baseDef')) {
+        buildUniqString += `\n  Defense: ${myNum}`
     }
-   // if (scopeItem.hasOwnProperty('maxED')) {
-       // buildUniqString += `\n  Max Damage: ${scopeItem.maxED}`
-    //}
 
     txtBoxRowsIDCounter = 0;
-    //alert(`${classItemID} ${itemID} ${uniqs[classItemID][itemID].uniqProps[0].attrName}`);
     for (const props of uniqs[classItemID][itemID].uniqProps) {
         //(1)add all col to this row / create this row first
         const thisRow = document.createElement("div");
@@ -348,19 +340,34 @@ function setOptionTags(classItemID, itemID) {
         txtBoxInputControl.innerHTML = `${props.userValue}`;
         //txtBoxInputControl.placeholder = `${props.userValue}`
         //pullUserValue.innerHTML = "we changed it";
+
+        if (props.attrName == 'Enhanced Defense %') {
+            scopeItem.ed = props.max;
+            console.log(`Line 342: ${scopeItem.ed} selelected def: ${scopeItem.selectedDef} base def: ${scopeItem.baseDef}`); //Come here
+            scopeItem.selectedDef = Math.floor(((scopeItem.baseDef + 1) * ((100 + scopeItem.ed) / 10)) / 10);
+
+            txtBoxInputControl.addEventListener("keyup", function () {
+                let e = document.querySelector(`#${this.id}`).value;
+                scopeItem.ed = e;
+                //scopeItem.selectedDef
+                let v = 0;
+                v = ((parseFloat(scopeItem.baseDef) + 1) * ((parseFloat(scopeItem.ed) + 100) / 100));
+                scopeItem.selectedDef = Math.floor(v);
+                console.log(`V:${v}`);
+                let g = document.querySelector(`#${this.id}`);
+                g.setSelectionRange(3, 3);
+                g.focus();
+                console.log(`Line 348: scopeItem base def: ${scopeItem.baseDef} selected Def: ${scopeItem.selectedDef} scopeitem.ed: ${scopeItem.ed}E: ${e}`);
+            })
+        }
         //(5.2)add on keypress event -> this is our main driver basically
         txtBoxInputControl.addEventListener("keyup", function () {
-            //console.log(`${document.getElementById(this.id)}`);
-
             let e = document.querySelector(`#${this.id}`).value;
             props.userValue = e;
-            setOptionTags(grab, grab2);
+            setOptionTags(grab, grab2,grab3);
             let g = document.querySelector(`#${this.id}`);
-            g.setSelectionRange(1, 1);
+            g.setSelectionRange(3, 3);
             g.focus();
-            console.log(`Text box input key press ${e}`) //Debug line
-
-            //generateUniqString(props,uniqs[classItemID][itemID]);
         })
         //(5.3)add to row
         thisRow.appendChild(txtBoxInputControl);
@@ -368,10 +375,7 @@ function setOptionTags(classItemID, itemID) {
         //Final Step - Add our row to the insertRowHere section of HTML doc
         document.getElementById("insertRowsHere").appendChild(thisRow);
 
-        
         generateUniqString(props, uniqs[classItemID][itemID]);
-
-
     }
 
     document.getElementById("outputText").value = buildUniqString;
@@ -379,8 +383,6 @@ function setOptionTags(classItemID, itemID) {
 }
 
 function genItemListBtn(classItemID) {
-    //console.log(`genitemlist: ${test[0].itemClass}`)
-    //console.log(`${uniqs[classItemID]} ClassItemID in genItemBTN():${classItemID}`) 
     const deleteTheseElements = document.querySelectorAll(".removableClass");
     for (const elem of deleteTheseElements) {
         elem.remove();
@@ -400,14 +402,14 @@ function genItemListBtn(classItemID) {
             document.getElementById("chooseItemTagID").innerText = item.name;
             grab = classItemID;
             grab2 = this.id;
+/////////////////////////////////////////////////////////////////////
+            
             setOptionTags(classItemID, this.id);
         })
         document.getElementById("ulItemListID").appendChild(liItem);
 
     }
 }
-let btnItemClassIDCounter = 0;
-
 
 function initilizer() {
     clearLblTrade();
@@ -425,23 +427,10 @@ function initilizer() {
             document.getElementById("chooseItemTagID").innerText = `Choose item`;
             clearLblTrade();
             genItemListBtn(this.id);
-            //console.log(`ID: ${this.id} ${value[0].name} valueThis.ID:${value[this.id].itemClass}`);
         })
         document.getElementById("ulClassListID").appendChild(liItem);
-        //generate itemClass buttons
-        //add listener
-        //add class == itemClass
-        for (const items of value) {
-            console.log(items.id);
-
-            for (const props of items.uniqProps) {
-                console.log(props.attrName);
-            }
-        }
     }
-
 }
 
+
 initilizer();
-
-
