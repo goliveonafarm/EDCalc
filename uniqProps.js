@@ -3,61 +3,61 @@ let uniqs = [];
 const assWeapons = [];
 const amaWeapons = [];
 const barbArmors = [];
-const druidArmor = [];
-const necroArmor = [];
-const paladinArmor = [];
+const druidArmors = [];
+const necroArmors = [];
+const paladinArmors = [];
 const sorcWeapons = [];
 
-const armorArmor = []
+const armorArmors = []
 const axesWeapons = [];
-const beltsArmor = [];
-const bootsArmor = [];
+const beltsArmors = [];
+const bootsArmors = [];
 const bowsWeapons = [];
 
-const crossbowsWeapon = [];
-const daggersWeapon = [];
-const glovesArmor = [];
-const headgearArmor = [];
-const javelinsWeapon = [];
+const crossbowsWeapons = [];
+const daggersWeapons = [];
+const glovesArmors = [];
+const helmArmors = [];
+const javelinsWeapons = [];
 
-const macesWeapon = [];
-const polearmsWeapon = [];
-const sceptresWeapon = [];
-const shieldsArmor = [];
+const macesWeapons = [];
+const polearmsWeapons = [];
+const sceptresWeapons = [];
+const shieldsArmors = [];
 
-const spearsWeapon = [];
-const stavesWeapon = [];
-const swordsWeapon = [];
-const thorwingsWeapon = [];
-const wandsWeapon = [];
+const spearsWeapons = [];
+const stavesWeapons = [];
+const swordsWeapons = [];
+const thorwingsWeapons = [];
+const wandsWeapons = [];
 
-assWeapons.itemClass = `Assassin Katars:`;
-amaWeapons.itemClass = `Amazon Weapons:`;
-barbArmors.itemClass = `Barbarian Helms:`;
-druidArmor.itemClass = `Druid Pelts`;
-necroArmor.itemClass = `Necromancer Shrunken Heads`;
-paladinArmor.itemClass = `Paladin Shields`;
+assWeapons.itemClass = `Assassin Katars`;
+amaWeapons.itemClass = `Amazon Weapons`;
+barbArmors.itemClass = `Barbarian Helms`;
+druidArmors.itemClass = `Druid Pelts`;
+necroArmors.itemClass = `Necromancer Shrunken Heads`;
+paladinArmors.itemClass = `Paladin Shields`;
 sorcWeapons.itemClass = `Sorceress Orbs`;
 
-armorArmor.itemClass = `Armors`;
+armorArmors.itemClass = `Armors`;
 axesWeapons.itemClass = `Axes`;
-beltsArmor.itemClass = `Belts`;
-bootsArmor.itemClass = `Boots`;
+beltsArmors.itemClass = `Belts`;
+bootsArmors.itemClass = `Boots`;
 bowsWeapons.itemClass = `Bows`;
-crossbowsWeapon.itemClass = `Crossbows`;
-daggersWeapon.itemClass = `Daggers`;
-glovesArmor.itemClass = `Gloves`;
-headgearArmor.itemClass = `Helms`;
-javelinsWeapon.itemClass = `Javelins`;
-macesWeapon.itemClass = `Maces`;
-polearmsWeapon.itemClass = `Polearms`;
-sceptresWeapon.itemClass = `Scepters`;
-shieldsArmor.itemClass = `Shields`;
-spearsWeapon.itemClass = `Spears`;
-stavesWeapon.itemClass = `Staves`;
-swordsWeapon.itemClass = `Swords`;
-thorwingsWeapon.itemClass = `Throwing`;
-wandsWeapon.itemClass = `Wands`;
+crossbowsWeapons.itemClass = `Crossbows`;
+daggersWeapons.itemClass = `Daggers`;
+glovesArmors.itemClass = `Gloves`;
+helmArmors.itemClass = `Helms`;
+javelinsWeapons.itemClass = `Javelins`;
+macesWeapons.itemClass = `Maces`;
+polearmsWeapons.itemClass = `Polearms`;
+sceptresWeapons.itemClass = `Scepters`;
+shieldsArmors.itemClass = `Shields`;
+spearsWeapons.itemClass = `Spears`;
+stavesWeapons.itemClass = `Staves`;
+swordsWeapons.itemClass = `Swords`;
+thorwingsWeapons.itemClass = `Throwing`;
+wandsWeapons.itemClass = `Wands`;
 
 class armor {
     constructor(name, base, baseDef, ed) {
@@ -75,6 +75,39 @@ class barbArmor extends armor {
         super(name, base, baseDef, ed)
         barbArmors[id] = this;
         this.id = id++;
+    }
+}
+
+
+class druidArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        druidArmors[id] = this;
+        this.id = id++;
+    }
+}
+
+class necroArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        necroArmors[id] = this;
+        this.id = id++;
+    }
+}
+
+class paladinArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        paladinArmors[id] = this;
+        this.id = id++;
+    }
+}
+
+class helmArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        helmArmors[id] = this;
+        this.id = id++
     }
 }
 
@@ -116,8 +149,8 @@ class uniqProp {
     }
 }
 
-class nonLootProp extends uniqProp{
-    constructor(attrName, min, max){
+class nonLootProp extends uniqProp {
+    constructor(attrName, min, max) {
         super(attrName, min, max);
         this.loot = false;
     }
@@ -203,7 +236,7 @@ id = 0;
 const arreats = new barbArmor('Arreat\'s Face', 'Slayer Guard', 120, 200);
 arreats.uniqProps = [
     new nonLootProp('Enhanced Defense %', 150, 200),
-    new uniqProp('Life Steal', 3, 6),
+    new uniqProp('Life Steal', 3, 6)
 ]
 const wolfhowl = new barbArmor('Wolfhowl', 'Fury Visor', 150, 150);
 wolfhowl.uniqProps = [
@@ -236,13 +269,78 @@ id = 0;
 //#endregion
 
 //#region Druid
-
+const jalals = new druidArmor('Jalal\'s Mane', `Totemic Mask`, 98, 200);
+jalals.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 200)
+]
+const cerebus = new druidArmor('Cerebuss\' Bite', 'Blood Spirit', 145, 140);
+cerebus.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 130, 140),
+    new nonLootProp('Bonus Attack Rating %', 200, 300),
+    new uniqProp('Life Steal', 7, 10),
+    new uniqNestProp(`Class Skill Tree`, `Druid Shape Shifting`, 2, 4),
+    new uniqNestProp('Skills', 'Feral Rage', 1, 2)
+]
+const ravenlore = new druidArmor('Ravenlore', 'Sky Spirit', 155, 150);
+ravenlore.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 120, 150),
+    new uniqProp('Enemy Fire Resist', -10, -20),
+    new uniqProp('All Resist', 15, 25)
+]
+const spiritKeeper = new druidArmor('Spirit Keeper', 'Earth Spirit', 152, 190);
+spiritKeeper.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 170, 190),
+    new uniqNestProp('Class Skills', 'Druid', 1, 2),
+    new uniqProp('Fire Resist', 30, 40),
+    new nonLootProp('Lightning Absorb', 9, 14),
+    new uniqProp('Absorb Cold Percent', 15, 25)
+]
+id = 0;
 //#endregion
 
 //#region Necromancer
+const homunculus = new necroArmor('Homunculus', 'Hierophant Trophy', 70, 200);
+homunculus.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 150, 200)
+]
+const darkforce = new necroArmor('Darkforce Spawn', 'Bloodlord Skull', 148, 180);
+darkforce.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 140, 180),
+    new uniqNestProp(`Class Skill Tree`, `Necromancer Summoning`, 1, 3),
+    new uniqNestProp(`Class Skill Tree`, `Necromancer Poison and Bone`, 1, 3),
+    new uniqNestProp(`Class Skill Tree`, `Necromancer Curses`, 1, 3),
+
+]
+const boneflame = new necroArmor('Boneflame', 'Succubus Skull', 146, 150);
+boneflame.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 120, 150),
+    new uniqNestProp('Class Skills', 'Necromancer', 2, 3),
+    new uniqProp('All Resist', 20, 30)
+]
+id=0;
 //#endregion
 
 //#region Paladin
+const zakarum = new paladinArmor('Herald of Zakarum', 'Gilded Shield', 168, 200);
+zakarum.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 200),
+
+]
+const almanegra = new paladinArmor('Alma Negra', 'Sacred Rondache', 164, 210);
+almanegra.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 180, 210),
+    new uniqNestProp('Class Skills', 'Paladin', 1, 2),
+    new nonLootProp('Enhanced Damage %', 40, 75),
+    new nonLootProp('Bonus Attack Rating %', 200, 300),
+    new nonLootProp('Magic Damage Reduced By ', 5, 9)
+]
+const dragonscale = new paladinArmor('Dragonscale', 'Zakarum', 193, 200);
+dragonscale.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 170, 200),
+    new uniqProp('Strength', 15, 20),
+    new uniqProp('Absorb Fire Percent', 10, 20)
+]
+id=0;
 //#endregion
 
 //#region Sorceress
@@ -273,6 +371,11 @@ id = 0;
 //#endregion
 
 //#region Helms
+const shako = new helmArmor('Harlequin Crest', 'Shako', 141, 0);
+shako.uniqProps = [
+    new uniqProp('Defense', 98, 141)
+];
+id = 0;
 //#endregion
 
 //#region Javelins
@@ -305,15 +408,16 @@ id = 0;
 //#region Wands
 //#endregion
 
-uniqs.push(amaWeapons, assWeapons, barbArmors, 
-    //druidArmor, 
-    //    necroArmor, paladinArmor, sorcWeapons, armorArmor, 
-    //    axesWeapons, beltsArmor, bootsArmor, bowsWeapons,
-    //    crossbowsWeapon, daggersWeapon, glovesArmor, headgearArmor, 
-    //    javelinsWeapon, macesWeapon, polearmsWeapon, sceptresWeapon, 
-    //    shieldsArmor, spearsWeapon, stavesWeapon, swordsWeapon, 
-    //  thorwingsWeapon, wandsWeapon 
-    );
+uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
+    necroArmors, paladinArmors
+    /*
+    , sorcWeapons, armorArmors,
+    axesWeapons, beltsArmors, bootsArmors, bowsWeapons,
+    crossbowsWeapons, daggersWeapons, glovesArmors, helmArmors,
+    javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,
+    shieldsArmors, spearsWeapons, stavesWeapons, swordsWeapons,
+    thorwingsWeapons, wandsWeapons*/
+);
 
 
 

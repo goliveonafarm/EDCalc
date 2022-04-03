@@ -265,7 +265,7 @@ function generateUniqString(props) {
     buildTradeString += `${firstSymbolInTrade} ${props.attrName} `;
     buildTradeString += ` ${props.userValue} `;
 
-    if(firstSymbolInTrade == ``){
+    if (firstSymbolInTrade == ``) {
         firstSymbolInTrade = `/`
     }
 
@@ -293,18 +293,20 @@ function setOptionTags(classItemID, itemID) {
 
     let myNum = ((parseFloat(scopeItem.baseDef) + 1) * ((parseFloat(scopeItem.ed) + 100) / 100));
     myNum = Math.floor(myNum);
-    console.log(`scopeItem.ed: ${scopeItem.ed} ${scopeItem.baseDef}`);
+    console.log(`line 296: scopeItem.ed: ${scopeItem.ed} scopeItem.BaseDef${scopeItem.baseDef} myNum: ${myNum}`);
     //Defense is controlled here
-    if (scopeItem.hasOwnProperty('baseDef')) {
-        defenseStr = `Defense ${myNum} /`
+
+    if (scopeItem.ed !== 0) {
+        if (scopeItem.hasOwnProperty('baseDef')) {
+            defenseStr = `Defense ${myNum} /`
+        }
+
+        buildTradeString += defenseStr;
+
+        if (scopeItem.hasOwnProperty('baseDef')) {
+            buildUniqString += `\n  Defense: ${myNum}`
+        }
     }
-
-    buildTradeString += defenseStr;
-
-    if (scopeItem.hasOwnProperty('baseDef')) {
-        buildUniqString += `\n  Defense: ${myNum}`
-    }
-
     txtBoxRowsIDCounter = 0;
     for (const props of uniqs[classItemID][itemID].uniqProps) {
         //(1)add all col to this row / create this row first
@@ -349,7 +351,7 @@ function setOptionTags(classItemID, itemID) {
 
         if (props.attrName == 'Enhanced Defense %') {
             scopeItem.ed = props.max;
-            console.log(`Line 342: ${scopeItem.ed} selelected def: ${scopeItem.selectedDef} base def: ${scopeItem.baseDef}`); //Come here
+            console.log(`Line 352: ${scopeItem.ed} selelected def: ${scopeItem.selectedDef} base def: ${scopeItem.baseDef}`); //Come here
             scopeItem.selectedDef = Math.floor(((scopeItem.baseDef + 1) * ((100 + scopeItem.ed) / 10)) / 10);
 
             txtBoxInputControl.addEventListener("keyup", function () {
@@ -370,7 +372,7 @@ function setOptionTags(classItemID, itemID) {
         txtBoxInputControl.addEventListener("keyup", function () {
             let e = document.querySelector(`#${this.id}`).value;
             props.userValue = e;
-            setOptionTags(grab, grab2,grab3);
+            setOptionTags(grab, grab2, grab3);
             let g = document.querySelector(`#${this.id}`);
             g.setSelectionRange(3, 3);
             g.focus();
@@ -408,8 +410,8 @@ function genItemListBtn(classItemID) {
             document.getElementById("chooseItemTagID").innerText = item.name;
             grab = classItemID;
             grab2 = this.id;
-/////////////////////////////////////////////////////////////////////
-            
+            /////////////////////////////////////////////////////////////////////
+
             setOptionTags(classItemID, this.id);
         })
         document.getElementById("ulItemListID").appendChild(liItem);
