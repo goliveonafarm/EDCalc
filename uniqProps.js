@@ -103,6 +103,14 @@ class paladinArmor extends armor {
     }
 }
 
+class armorArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        armorArmors[id] = this;
+        this.id = id++;
+    }
+}
+
 class helmArmor extends armor {
     constructor(name, base, baseDef, ed) {
         super(name, base, baseDef, ed)
@@ -134,6 +142,13 @@ class amazonWeapon extends weapon {
     constructor(name, base, minED, maxED) {
         super(name, base, minED, maxED)
         amaWeapons[id] = this;
+        this.id = id++;
+    }
+}
+class sorcWeapon extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        sorcWeapons[id] = this;
         this.id = id++;
     }
 }
@@ -344,9 +359,70 @@ id=0;
 //#endregion
 
 //#region Sorceress
+const eschutas = new sorcWeapon('Eschuta\'s Temper', 'Eldritch Orb', 0, 0);
+eschutas.uniqProps = [
+    new uniqNestProp('Class Skills', 'Sorceress', 1, 3),
+    new uniqProp('Fire Skill Damage', 10, 20),
+    new uniqProp('Lightning Skill Damage', 10, 20),
+    new uniqProp('Energy', 20, 30)
+]
+const deathsFathom = new sorcWeapon('Death\s Fathom', 'Dimensional Shard', 0 , 0);
+deathsFathom.uniqProps = [
+    new uniqProp('Cold Skill Damage', 15, 30),
+    new uniqProp('Lightning Resist', 25, 40),
+    new uniqProp('Fire Resist', 25, 40)
+]
+id=0;
 //#endregion
 
 //#region Armor
+const ormus = new armorArmor('Ormus\' Robus', 'Dusk Shroud', 467, 0);
+ormus.uniqProps = [
+    new uniqProp('Cold Skill Damage', 10, 15),
+    new uniqProp('Fire Skill Damage', 10, 15),
+    new uniqProp('Lightning Skill Damage', 10, 15)
+]
+const gladiators= new armorArmor('Gladiator\'s Bane', 'Wire Fleece', 481, 200);
+gladiators.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 200),
+    new uniqProp('Damage Reduced', 15, 20),
+    new nonLootProp('Magic Damage Reduced By ', 15, 20)
+]
+gladiators.addDef = 50;
+const arkaines = new armorArmor('Arkaines Valor', 'Balrog Skin', 517, 180);
+arkaines.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 180),
+    new uniqProp('All Skills', 1, 2),
+    new uniqProp('Damage Reduced', 10, 15)
+]
+const leaviathan = new armorArmor('Leviathan', 'Kraken Shell', 523, 200);
+leaviathan.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 170, 200),
+    new uniqProp('Defense', 100, 150),
+    new uniqProp('Strength', 40, 50),
+    new nonLootProp('Damage Reduced By %', 15, 25)
+]
+const steelCarapace = new armorArmor('Steel Carapace', 'Shadow Plate', 557, 220);
+steelCarapace.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 190, 220),
+    new nonLootProp('Regenerate Mana %', 10, 15),
+    new uniqProp('Cold Resist', 40, 60),
+    new uniqProp('Damage Reduced', 9, 14)
+]
+const templarsMight = new armorArmor('Templars Might', 'Sacred Armor', 600, 220)
+templarsMight.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 170, 220),
+    new nonLootProp('Defense vs. Missiles', 250, 300),
+    new uniqNestProp(`Class Skill Tree`, `Paladin Offensive Auras`, 1, 2),
+]
+const tyraelsMight = new armorArmor('Tyraels Might', 'Sacred Armor', 600, 150)
+tyraelsMight.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 120, 150),
+    new nonLootProp('Damage to Demons %', 50, 100),
+    new uniqProp('Strength', 20, 30),
+    new uniqProp('All Resist', 20, 30)
+]
+id=0;
 //#endregion
 
 //#region Axes
@@ -409,9 +485,7 @@ id = 0;
 //#endregion
 
 uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
-    necroArmors, paladinArmors
-    /*
-    , sorcWeapons, armorArmors,
+    necroArmors, paladinArmors, sorcWeapons, armorArmors/*,
     axesWeapons, beltsArmors, bootsArmors, bowsWeapons,
     crossbowsWeapons, daggersWeapons, glovesArmors, helmArmors,
     javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,

@@ -296,15 +296,21 @@ function setOptionTags(classItemID, itemID) {
     console.log(`line 296: scopeItem.ed: ${scopeItem.ed} scopeItem.BaseDef${scopeItem.baseDef} myNum: ${myNum}`);
     //Defense is controlled here
 
+    let addThisDef = 0.0;
+    if (scopeItem.hasOwnProperty('addDef')){
+        console.log(`hit: scopeItem.addDef = ${scopeItem.addDef}`);
+        addThisDef = parseFloat(scopeItem.addDef);
+    }
+
     if (scopeItem.ed !== 0) {
         if (scopeItem.hasOwnProperty('baseDef')) {
-            defenseStr = `Defense ${myNum} /`
+            defenseStr = `Defense ${parseFloat(myNum) + addThisDef} /`
         }
 
         buildTradeString += defenseStr;
 
         if (scopeItem.hasOwnProperty('baseDef')) {
-            buildUniqString += `\n  Defense: ${myNum}`
+            buildUniqString += `\n  Defense: ${parseFloat(myNum) + addThisDef}`
         }
     }
     txtBoxRowsIDCounter = 0;
@@ -348,6 +354,10 @@ function setOptionTags(classItemID, itemID) {
         txtBoxInputControl.innerHTML = `${props.userValue}`;
         //txtBoxInputControl.placeholder = `${props.userValue}`
         //pullUserValue.innerHTML = "we changed it";
+
+        if (props.attrName == 'Defense'){
+            scopeItem.addDef = parseFloat(props.userValue);
+        }
 
         if (props.attrName == 'Enhanced Defense %') {
             scopeItem.ed = props.max;
