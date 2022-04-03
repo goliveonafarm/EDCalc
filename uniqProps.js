@@ -378,6 +378,7 @@ id=0;
 //#region Armor
 const ormus = new armorArmor('Ormus\' Robus', 'Dusk Shroud', 467, 0);
 ormus.uniqProps = [
+    new uniqProp('Defense', 371, 487),
     new uniqProp('Cold Skill Damage', 10, 15),
     new uniqProp('Fire Skill Damage', 10, 15),
     new uniqProp('Lightning Skill Damage', 10, 15)
