@@ -387,7 +387,7 @@ almanegra.uniqProps = [
     new uniqNestProp('Class Skills', 'Paladin', 1, 2),
     new nonLootProp('Enhanced Damage %', 40, 75),
     new nonLootProp('Bonus Attack Rating %', 200, 300),
-    new nonLootProp('Magic Damage Reduced By ', 5, 9)
+    new nonLootProp('Magic Damage Reduced By', 5, 9)
 ]
 const dragonscale = new paladinArmor('Dragonscale', 'Zakarum', 193, 200);
 dragonscale.uniqProps = [
@@ -427,7 +427,7 @@ const gladiators= new armorArmor('Gladiator\'s Bane', 'Wire Fleece', 481, 200);
 gladiators.uniqProps = [
     new nonLootProp('Enhanced Defense %', 150, 200),
     new uniqProp('Damage Reduced', 15, 20),
-    new nonLootProp('Magic Damage Reduced By ', 15, 20)
+    new nonLootProp('Magic Damage Reduced By', 15, 20)
 ]
 gladiators.addDef = 50;
 const arkaines = new armorArmor('Arkaines Valor', 'Balrog Skin', 517, 180);
@@ -482,7 +482,7 @@ stringEars.uniqProps =[
     new nonLootProp('Enhanced Defense %', 150, 180),
     new uniqProp('Life Steal', 6, 8),
     new nonLootProp('Damage Reduced By %', 15, 25),
-    new nonLootProp('Magic Damage Reduced By ', 10, 15)
+    new nonLootProp('Magic Damage Reduced By', 10, 15)
 ]
 const razortail = new beltArmor('Razortail', 'Sharkskin Belt', 36, 150);
 razortail.uniqProps =[
@@ -640,10 +640,79 @@ id=0;
 //#endregion
 
 //#region Helms
+const tarnhelm = new helmArmor('Tarnhelm', 'Skull Cap', 11, 0);
+tarnhelm.uniqProps = [
+    new uniqProp('Defense', 8, 11),
+    new uniqProp('Magic Find', 25, 50)
+]
+const rockstopper = new helmArmor('Rockstopper', 'Sallet', 62, 220);
+rockstopper.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 160, 220),
+    new uniqProp('Cold Resist', 20, 40),
+    new uniqProp('Fire Resist', 20, 50),
+    new uniqProp('Lightning Resist', 20, 40)
+]
+const stealskull = new helmArmor('Stealskull', 'Casque', 72, 240);
+stealskull.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 200, 240),
+    new uniqProp('Magic Find', 30, 50)
+]
+const valkyrieWing = new helmArmor('Valkyrie Wing', 'Winged Helm', 98, 200);
+valkyrieWing.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 200),
+    new uniqNestProp('Class Skills', 'Amazon', 1, 2),
+    new nonLootProp('Mana After Kill', 2, 4)
+]
+const crownOfThieves = new helmArmor('Crown of Thieves', 'Grand Crown', 113, 200);
+crownOfThieves.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 160, 200),
+    new uniqProp('Life Steal', 9, 12),
+    new uniqProp('Gold Find', 80, 100)
+]
+const vampireGaze = new helmArmor('Vampire Gaze', 'Grim Helm', 125, 100);
+vampireGaze.uniqProps = [
+    new uniqProp('Life Steal', 6, 8),
+    new uniqProp('Mana Steal', 6, 8),
+    new nonLootProp('Damage Reduced By %', 15, 20),
+    new nonLootProp('Magic Damage Reduced By', 10, 15)
+]
 const shako = new helmArmor('Harlequin Crest', 'Shako', 141, 0);
 shako.uniqProps = [
     new uniqProp('Defense', 98, 141)
-];
+]
+const steelShade = new helmArmor('Steel Shade', 'Armet', 149, 130);
+steelShade.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 100, 130),
+    new nonLootProp('Replenish Life', 10, 18),
+    new uniqProp('Mana Steal', 4, 8),
+    new nonLootProp('Fire Absorb', 5, 11)
+]
+const nightwingsVeil = new helmArmor('Nightwing\s Veil', 'Spired Helm', 159, 120);
+nightwingsVeil.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 90, 120),
+    new uniqProp('Cold Skill Damage', 8, 15),
+    new uniqProp('Dexterity', 10, 20),
+    new nonLootProp('Cold Absorb', 5, 9)
+]
+const andysVisage = new helmArmor('Andariel\ss Andy\'s Visage', 'Demonhead', 154, 150);
+andysVisage.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 100, 150),
+    new uniqProp('Life Steal', 8, 10),
+    new uniqProp('Strength', 25, 30)
+]
+const crownOfAges = new helmArmor('Crown of Ages', 'Corona', 165, 0);
+crownOfAges.uniqProps = [
+    new uniqProp('Defense', 349, 399),
+    new nonLootProp('Damage Reduced By %', 10, 15),
+    new uniqProp('All Resist', 20, 30),
+    new uniqProp('Sockets', 1, 2),
+]
+const giantSkull = new helmArmor('Giant Skull', 'Bone Visage', 157, 0);
+giantSkull.uniqProps = [
+    new uniqProp('Defense', 350, 477),
+    new uniqProp('Strength', 25, 35),
+    new uniqProp('Sockets', 1, 2)
+]
 id = 0;
 //#endregion
 
@@ -680,8 +749,8 @@ id = 0;
 uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
     necroArmors, paladinArmors, sorcWeapons, armorArmors,
     /*axesWeapons, */beltsArmors, bootsArmors, bowsWeapons,
-    /*crossbowsWeapons, daggersWeapons, */glovesArmors, /*helmArmors,
-    javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,
+    /*crossbowsWeapons, daggersWeapons, */glovesArmors, helmArmors,
+    /*javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,
     shieldsArmors, spearsWeapons, stavesWeapons, swordsWeapons,
     thorwingsWeapons, wandsWeapons*/
 );
