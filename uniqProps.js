@@ -119,6 +119,30 @@ class helmArmor extends armor {
     }
 }
 
+class beltArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        beltsArmors[id] = this;
+        this.id = id++
+    }
+}
+
+class bootArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        bootsArmors[id] = this;
+        this.id = id++
+    }
+}
+
+class gloveArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        glovesArmors[id] = this;
+        this.id = id++
+    }
+}
+
 class weapon {
     constructor(name, base, minED, maxED) {
         this.name = name;
@@ -153,6 +177,22 @@ class sorcWeapon extends armor {
     }
 }
 
+class bowWeapon extends weapon {
+    constructor(name, base, minED, maxED) {
+        super(name, base, minED, maxED)
+        bowsWeapons[id] = this;
+        this.id = id++;
+    }
+}
+
+class axeWeapon extends weapon {
+    constructor(name, base, minED, maxED) {
+        super(name, base, minED, maxED)
+        axesWeapons[id] = this;
+        this.id = id++;
+    }
+}
+
 class uniqProp {
     constructor(attrName, min, max) {
         this.attrName = attrName;
@@ -180,7 +220,7 @@ class uniqNestProp extends uniqProp {
 }
 
 //#region Amazon
-const stoneRaven = new amazonWeapon('Stoneraven', 'Matriarchal Spear', 316, 361);
+const stoneRaven = new amazonWeapon('Stoneraven', 'Matriarchal Spear', 230, 280);
 stoneRaven.uniqProps = [
     new nonLootProp('Enhanced Damage %', 230, 280),
     new uniqProp('Defense', 400, 600),
@@ -192,25 +232,25 @@ lycandersFlank.uniqProps = [
     new nonLootProp('Enhanced Damage %', 150, 200),
     new uniqProp('Life Steal', 5, 9)
 ]
-const lycandersAim = new amazonWeapon('Lycander\'s Aim', 'Ceremonial Bow', 152, 173);
+const lycandersAim = new amazonWeapon('Lycander\'s Aim', 'Ceremonial Bow', 150, 200);
 lycandersAim.uniqProps = [
     new nonLootProp('Enhanced Damage %', 150, 200),
     new uniqProp('Mana Steal', 5, 8)
 
 ]
-const titans = new amazonWeapon('Titan\'s Revenge', 'Ceremonial Javelin', 185, 212);
+const titans = new amazonWeapon('Titan\'s Revenge', 'Ceremonial Javelin', 150, 200);
 titans.uniqProps = [
     new nonLootProp('Enhanced Damage %', 150, 200),
     new uniqProp('Life Steal', 5, 9)
 ]
-const thunderstroke = new amazonWeapon('Thunderstroke', 'Matriarchal Javelin', 165, 198);
+const thunderstroke = new amazonWeapon('Thunderstroke', 'Matriarchal Javelin', 150, 200);
 thunderstroke.uniqProps = [
     new nonLootProp('Enhanced Damage %', 150, 200),
     new uniqNestProp('Class Skill Tree', 'Amazon Javelin And Spear', 2, 4)
 ]
-const bloodRavens = new amazonWeapon('Blood Raven\'s Charge', 'Matriarchal Bow', 131, 155);
+const bloodRavens = new amazonWeapon('Blood Raven\'s Charge', 'Matriarchal Bow', 180, 230);
 bloodRavens.uniqProps = [
-    new nonLootProp('Enhanced Damage %', 150, 200),
+    new nonLootProp('Enhanced Damage %', 180, 230),
     new nonLootProp('Bonus Attack Rating %', 200, 300),
     new uniqNestProp('Class Skill Tree', 'Amazon Bow And Crossbow', 2, 4)
 ]
@@ -218,17 +258,17 @@ id = 0;
 //#endregion
 
 //#region Assassin
-const shadowKiller = new assassinWeapon('Shadow Killer', 'Battle Cestus', 170, 201);
+const shadowKiller = new assassinWeapon('Shadow Killer', 'Battle Cestus', 170, 220);
 shadowKiller.uniqProps = [
     new nonLootProp('Enhanced Damage %', 170, 220),
-    new nonLootProp('Mana after kill', 10, 15)
+    new nonLootProp('Mana After Kill', 10, 15)
 ]
-const bartucs = new assassinWeapon('Bartucs Cut-Throat', 'Greater Talons', 137, 155);
+const bartucs = new assassinWeapon('Bartucs Cut-Throat', 'Greater Talons', 150, 200);
 bartucs.uniqProps = [
     new nonLootProp('Enhanced Damage %', 150, 200),
     new uniqProp('Life Steal', 5, 9)
 ]
-const firelizards = new assassinWeapon('Firelizards Talons', 'Feral Claws', 159, 196);
+const firelizards = new assassinWeapon('Firelizards Talons', 'Feral Claws', 200,270 );
 firelizards.uniqProps = [
     new nonLootProp('Enhanced Damage %', 200, 270),
     new uniqNestProp('Class Skill Tree', 'Assassin Martial Arts', 1, 3),
@@ -236,7 +276,7 @@ firelizards.uniqProps = [
     new uniqNestProp('Skills', 'Wake of Fire', 1, 2),
     new uniqProp('Fire Resist', 40, 70)
 ]
-const jadeTalon = new assassinWeapon('Jade Talon', 'Wrist Sword', 130, 153);
+const jadeTalon = new assassinWeapon('Jade Talon', 'Wrist Sword', 190, 240);
 jadeTalon.uniqProps = [
     new nonLootProp('Enhanced Damage %', 190, 240),
     new uniqNestProp('Class Skill Tree', 'Assassin Martial Arts', 1, 2),
@@ -427,15 +467,110 @@ id=0;
 //#endregion
 
 //#region Axes
+id=0;
 //#endregion
 
 //#region Belts
+const goldwrap = new beltArmor('GoldWrap', 'Heavy Belt', 6, 60);
+goldwrap.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 40, 60),
+    new uniqProp('Gold Find', 50, 80),
+    new uniqProp('Life Steal', 6, 8)
+]
+const stringEars = new beltArmor('String of Ears', 'Demonhide Sash', 34, 180);
+stringEars.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 150, 180),
+    new uniqProp('Life Steal', 6, 8),
+    new nonLootProp('Damage Reduced By %', 15, 25),
+    new nonLootProp('Magic Damage Reduced By ', 10, 15)
+]
+const razortail = new beltArmor('Razortail', 'Sharkskin Belt', 36, 150);
+razortail.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 120, 150),
+]
+const snowclash = new beltArmor('Snowclash', 'Battle Belt', 42, 150);
+snowclash.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 130, 170),
+    new nonLootProp('When hit 5% chance cast blizzard level', 7, 20)
+]
+const tgods = new beltArmor('Thundergod\'s Vigor', 'War Belt', 52, 200);
+tgods.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 160, 200),
+
+]
+const arach = new beltArmor('Arachnid Mesh', 'Spiderweb Sash', 62, 120);
+arach.uniqProps =[
+    new nonLootProp('Enhanced Defense %', 90, 120),
+
+]
+const nosferatu = new beltArmor('Nosferatu\'s Coil', 'Vampirefang Belt', 63, 0);
+nosferatu.uniqProps =[
+    new uniqProp('Defense', 98, 141),
+    new uniqProp('Life Steal', 5, 7)
+]
+const verdugnos = new beltArmor('Verdungo\'s Hearty Cord', 'Mithril Coil', 65, 140);
+verdugnos.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 90, 140),
+    new uniqProp('Vitality', 30, 40),
+    new nonLootProp('Replenish Life', 10, 13),
+    new nonLootProp('Maximum Staimna +', 100, 120),
+    new nonLootProp('Damage Reduced By %', 15, 25)
+]
+id=0;
 //#endregion
 
 //#region Boots
+const goblinToe = new bootArmor('Goblin Toe', 'Light Plated Boots', 11, 60);
+goblinToe.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 50, 60)
+]
+const infernostride = new bootArmor('Infernostride', 'Demonhide Boots', 35, 150);
+infernostride.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 120, 150),
+    new uniqProp('Gold Find', 40, 70),
+]
+const warTraveler = new bootArmor('War Traveler', 'Battle Boots', 47, 190);
+warTraveler.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 150, 190),
+    new nonLootProp('Attacker Takes Damage of', 5, 10),
+    new uniqProp('Magic Find', 30, 50)
+]
+const goreRider = new bootArmor('Gore Rider', 'War Boots', 53, 200);
+goreRider.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 160, 200)
+]
+const sandstormTrek = new bootArmor('Sandstorm Trek', 'Scarabshell Boots', 65, 170);
+sandstormTrek.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 140, 170),
+    new uniqProp('Strength', 10, 15),
+    new uniqProp('Vitality', 10, 15),
+    new uniqProp('Poison Resist', 40, 70),
+]
+const marrowwalk = new bootArmor('Marrowwalk', 'Boneweave Boots', 67, 200);
+marrowwalk.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 170, 200),
+    new uniqNestProp('Skills', 'Skeleton Mastery', 1, 2),
+    new uniqProp('Strength', 10, 20)
+]
+const shadowDancer = new bootArmor('Shadow Dancer', 'Myrmidon Greaves', 71, 100);
+shadowDancer.uniqprops = [
+    new nonLootProp('Enhanced Defense %', 70, 100),
+    new uniqNestProp('Class Skill Tree', 'Assassin Shadow Disciplines', 1, 2),
+    new uniqProp('Dexterity', 15, 25)
+]
+id=0;
 //#endregion
 
 //#region Bows
+const kukuShakaku = new bowWeapon('Kuko Shakaku', 'Cedar Bow', 150, 180);
+kukuShakaku.uniqProps = [
+    new nonLootProp('Enhanced Damage %', 150, 180),
+]
+const windforce = new bowWeapon('Windforce', 'Hydra Bow', 250, 250);
+windforce.uniqProps = [ 
+    new uniqProp('Mana Steal', 6, 8)
+]
+id=0;
 //#endregion
 
 //#region Crossbows
@@ -445,6 +580,63 @@ id=0;
 //#endregion
 
 //#region Gloves
+const chanceGuards = new gloveArmor('Chance Guards Chancies', 'Chain Gloves', 8, 30);
+chanceGuards.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 20, 30),
+    new uniqProp('Magic Find', 25, 40)
+]
+const magefist = new gloveArmor('Magefist', 'Light Gauntlets', 11, 30);
+magefist.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 20, 30),
+]
+const frostburn = new gloveArmor('Frostburn', 'Gauntlets', 15, 20);
+frostburn.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 10, 20),
+]
+const venomGrip = new gloveArmor('Venom Grip', 'Demonhide Gloves', 35, 160);
+venomGrip.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 130, 160),
+    new uniqProp('Defense', 15, 25)
+]
+const gravepalm = new gloveArmor('Gravepalm', 'Sharkskin Gloves', 39, 180);
+gravepalm.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 140, 180),
+    new nonLootProp('Damage to Undead %', 100, 200),
+    new nonLootProp('Attack Rating vs Undead +', 100, 200)
+]
+const ghoulhide = new gloveArmor('Ghoulhide', 'Heavy Bracers', 44, 190);
+ghoulhide.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 190),
+    new uniqProp('Mana Steal', 4, 5)
+]
+const lavaGout = new gloveArmor('Lava Gout', 'Battle Gauntlets', 47, 200);
+lavaGout.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 200)
+]
+const hellmouth = new gloveArmor('Hellmouth', 'War Gauntlets', 53, 200);
+hellmouth.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 150, 200),
+]
+const draculs = new gloveArmor('Dracul\'s Grasp', 'Vampirebone Gloves', 65, 120);
+draculs.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 90, 120),
+    new uniqProp('Strength', 10, 15),
+    new nonLootProp('Life After kill', 5, 10),
+    new uniqProp('Life Steal', 7, 10)
+]
+const soulDrainer = new gloveArmor('Soul Drainer', 'Vambraces', 67, 120);
+soulDrainer.uniqProps = [
+    new nonLootProp('Enhanced Defense %', 90, 120),
+    new uniqProp('Mana Steal', 4, 7),
+    new uniqProp('Life Steal', 4, 7)
+]
+const ogreGauntlets = new gloveArmor('Steelrend', 'Ogre Gauntlets', 71, 0);
+ogreGauntlets.uniqProps = [
+    new uniqProp('Defense', 232, 281),
+    new nonLootProp('Enhanced Damage %', 30, 60),
+    new uniqProp('Strength', 15, 20)
+]
+id=0;
 //#endregion
 
 //#region Helms
@@ -486,9 +678,9 @@ id = 0;
 //#endregion
 
 uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
-    necroArmors, paladinArmors, sorcWeapons, armorArmors/*,
-    axesWeapons, beltsArmors, bootsArmors, bowsWeapons,
-    crossbowsWeapons, daggersWeapons, glovesArmors, helmArmors,
+    necroArmors, paladinArmors, sorcWeapons, armorArmors,
+    /*axesWeapons, */beltsArmors, bootsArmors, bowsWeapons,
+    /*crossbowsWeapons, daggersWeapons, */glovesArmors, /*helmArmors,
     javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,
     shieldsArmors, spearsWeapons, stavesWeapons, swordsWeapons,
     thorwingsWeapons, wandsWeapons*/
