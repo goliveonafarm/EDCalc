@@ -193,6 +193,22 @@ class axeWeapon extends weapon {
     }
 }
 
+class wandWeapon extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        wandsWeapons[id] = this;
+        this.id = id++;
+    }
+}
+
+class stavesWeapon extends weapon {
+    constructor(name, base, minED, mstavesD) {
+        super(name, base, minED, maxED)
+        stavesWeapons[id] = this;
+        this.id = id++;
+    }
+}
+
 class uniqProp {
     constructor(attrName, min, max) {
         this.attrName = attrName;
@@ -362,7 +378,7 @@ const darkforce = new necroArmor('Darkforce Spawn', 'Bloodlord Skull', 148, 180)
 darkforce.uniqProps =[
     new nonLootProp('Enhanced Defense %', 140, 180),
     new uniqNestProp(`Class Skill Tree`, `Necromancer Summoning`, 1, 3),
-    new uniqNestProp(`Class Skill Tree`, `Necromancer Poison and Bone`, 1, 3),
+    new uniqNestProp(`Class Skill Tree`, `Necromancer Poison and Bone Spells`, 1, 3),
     new uniqNestProp(`Class Skill Tree`, `Necromancer Curses`, 1, 3),
 
 ]
@@ -713,6 +729,17 @@ giantSkull.uniqProps = [
     new uniqProp('Strength', 25, 35),
     new uniqProp('Sockets', 1, 2)
 ]
+const kiras = new helmArmor('Kira\'s Guardian', 'Tiara', 50, 0);
+kiras.uniqProps = [
+    new uniqProp('Defense', 90, 170),
+    new uniqProp('All Resist', 50, 70)
+]
+const griffons = new helmArmor('Griffon\'s Eye', 'Diadem', 60, 0);
+griffons.uniqprops = [
+    new uniqProp('Defense', 150, 260),
+    new uniqProp('Enemy Lightning Resist', 15, 20),
+    new uniqProp('Lightning Skill Damage', 10, 15)
+]
 id = 0;
 //#endregion
 
@@ -735,6 +762,17 @@ id = 0;
 //#endregion
 
 //#region Staves
+const ribcracker = new stavesWeapon('Ribcracker','Quarterstaff', 200, 300);
+ribcracker.uniqProps = [
+    new nonLootProp('Enhanced Damage %', 200, 300)
+]
+const ondals = new stavesWeapon('Ondal\'s Wisdom','Elder Staff', 0, 0);
+ondals.uniqProps = [
+    new uniqProp('All Skills', 2, 4),
+    new uniqProp('Defense', 450, 550),
+    new uniqProp('Energy', 40, 50),
+    new nonLootProp('Magic Damage Reduced By', 5, 8)
+]
 //#endregion
 
 //#region Swords
@@ -744,6 +782,22 @@ id = 0;
 //#endregion
 
 //#region Wands
+const boneshade = new wandWeapon('Boneshade', 'Lich Wand', 0, 0);
+boneshade.uniqprops = [
+    new uniqNestProp('Skills', 'Bone Spirit', 1, 2),
+    new uniqNestProp('Skills', 'Bone Spear', 2, 3),
+    new uniqNestProp('Skills', 'Bone Wall', 2, 3),
+    new uniqNestProp('Skills', 'Bone Armor', 4, 5),
+    new uniqNestProp('Skills', 'Teeth', 4, 5),
+]
+const deathsWeb = new wandWeapon('Death\'s Web', 'Unearthed Wand', 0,0);
+deathsWeb.uniqprops = [
+    new uniqProp('Enemy Poison Resist', 40, 50),
+    new nonLootProp('Mana After Kill', 7, 12),
+    new nonLootProp('Mana After Kill', 7, 12),
+    new uniqNestProp('Class Skill Tree', 'Necromancer Poison and Bone Spells', 1, 2)
+]
+id=0
 //#endregion
 
 uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
@@ -752,13 +806,7 @@ uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
     /*crossbowsWeapons, daggersWeapons, */glovesArmors, helmArmors,
     /*javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,
     shieldsArmors, spearsWeapons, stavesWeapons, swordsWeapons,
-    thorwingsWeapons, wandsWeapons*/
+    thorwingsWeapons, */ wandsWeapons
 );
-
-
-
-
-
-
 
 export default uniqs;
