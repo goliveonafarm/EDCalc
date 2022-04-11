@@ -31,6 +31,8 @@ const swordsWeapons = [];
 const thorwingsWeapons = [];
 const wandsWeapons = [];
 
+const ringsArmors = [];
+
 assWeapons.itemClass = `Assassin Katars`;
 amaWeapons.itemClass = `Amazon Weapons`;
 barbArmors.itemClass = `Barbarian Helms`;
@@ -48,6 +50,7 @@ crossbowsWeapons.itemClass = `Crossbows`;
 daggersWeapons.itemClass = `Daggers`;
 glovesArmors.itemClass = `Gloves`;
 helmArmors.itemClass = `Helms`;
+ringsArmors.itemClass = `Rings`
 javelinsWeapons.itemClass = `Javelins`;
 macesWeapons.itemClass = `Maces`;
 polearmsWeapons.itemClass = `Polearms`;
@@ -143,6 +146,14 @@ class gloveArmor extends armor {
     }
 }
 
+class ringArmor extends armor {
+    constructor(name, base, baseDef, ed) {
+        super(name, base, baseDef, ed)
+        ringsArmors[id] = this;
+        this.id = id++
+    }
+}
+
 class weapon {
     constructor(name, base, minED, maxED) {
         this.name = name;
@@ -202,7 +213,7 @@ class wandWeapon extends armor {
 }
 
 class stavesWeapon extends weapon {
-    constructor(name, base, minED, mstavesD) {
+    constructor(name, base, minED, maxED) {
         super(name, base, minED, maxED)
         stavesWeapons[id] = this;
         this.id = id++;
@@ -363,7 +374,7 @@ spiritKeeper.uniqProps = [
     new nonLootProp('Enhanced Defense %', 170, 190),
     new uniqNestProp('Class Skills', 'Druid', 1, 2),
     new uniqProp('Fire Resist', 30, 40),
-    new nonLootProp('Lightning Absorb', 9, 14),
+    new uniqProp('Absorb Lightning Percent', 9, 14),
     new uniqProp('Absorb Cold Percent', 15, 25)
 ]
 id = 0;
@@ -537,39 +548,39 @@ id=0;
 
 //#region Boots
 const goblinToe = new bootArmor('Goblin Toe', 'Light Plated Boots', 11, 60);
-goblinToe.uniqprops = [
+goblinToe.uniqProps = [
     new nonLootProp('Enhanced Defense %', 50, 60)
 ]
 const infernostride = new bootArmor('Infernostride', 'Demonhide Boots', 35, 150);
-infernostride.uniqprops = [
+infernostride.uniqProps = [
     new nonLootProp('Enhanced Defense %', 120, 150),
     new uniqProp('Gold Find', 40, 70),
 ]
 const warTraveler = new bootArmor('War Traveler', 'Battle Boots', 47, 190);
-warTraveler.uniqprops = [
+warTraveler.uniqProps = [
     new nonLootProp('Enhanced Defense %', 150, 190),
     new nonLootProp('Attacker Takes Damage of', 5, 10),
     new uniqProp('Magic Find', 30, 50)
 ]
 const goreRider = new bootArmor('Gore Rider', 'War Boots', 53, 200);
-goreRider.uniqprops = [
+goreRider.uniqProps = [
     new nonLootProp('Enhanced Defense %', 160, 200)
 ]
 const sandstormTrek = new bootArmor('Sandstorm Trek', 'Scarabshell Boots', 65, 170);
-sandstormTrek.uniqprops = [
+sandstormTrek.uniqProps = [
     new nonLootProp('Enhanced Defense %', 140, 170),
     new uniqProp('Strength', 10, 15),
     new uniqProp('Vitality', 10, 15),
     new uniqProp('Poison Resist', 40, 70),
 ]
 const marrowwalk = new bootArmor('Marrowwalk', 'Boneweave Boots', 67, 200);
-marrowwalk.uniqprops = [
+marrowwalk.uniqProps = [
     new nonLootProp('Enhanced Defense %', 170, 200),
     new uniqNestProp('Skills', 'Skeleton Mastery', 1, 2),
     new uniqProp('Strength', 10, 20)
 ]
 const shadowDancer = new bootArmor('Shadow Dancer', 'Myrmidon Greaves', 71, 100);
-shadowDancer.uniqprops = [
+shadowDancer.uniqProps = [
     new nonLootProp('Enhanced Defense %', 70, 100),
     new uniqNestProp('Class Skill Tree', 'Assassin Shadow Disciplines', 1, 2),
     new uniqProp('Dexterity', 15, 25)
@@ -701,14 +712,14 @@ steelShade.uniqProps = [
     new nonLootProp('Enhanced Defense %', 100, 130),
     new nonLootProp('Replenish Life', 10, 18),
     new uniqProp('Mana Steal', 4, 8),
-    new nonLootProp('Fire Absorb', 5, 11)
+    new uniqProp('Absorb Fire Percent', 5, 11)
 ]
 const nightwingsVeil = new helmArmor('Nightwing\s Veil', 'Spired Helm', 159, 120);
 nightwingsVeil.uniqProps = [
     new nonLootProp('Enhanced Defense %', 90, 120),
     new uniqProp('Cold Skill Damage', 8, 15),
     new uniqProp('Dexterity', 10, 20),
-    new nonLootProp('Cold Absorb', 5, 9)
+    new uniqProp('Absorb Cold Percent', 5, 9)
 ]
 const andysVisage = new helmArmor('Andariel\ss Andy\'s Visage', 'Demonhead', 154, 150);
 andysVisage.uniqProps = [
@@ -735,7 +746,7 @@ kiras.uniqProps = [
     new uniqProp('All Resist', 50, 70)
 ]
 const griffons = new helmArmor('Griffon\'s Eye', 'Diadem', 60, 0);
-griffons.uniqprops = [
+griffons.uniqProps = [
     new uniqProp('Defense', 150, 260),
     new uniqProp('Enemy Lightning Resist', 15, 20),
     new uniqProp('Lightning Skill Damage', 10, 15)
@@ -773,6 +784,7 @@ ondals.uniqProps = [
     new uniqProp('Energy', 40, 50),
     new nonLootProp('Magic Damage Reduced By', 5, 8)
 ]
+id=0;
 //#endregion
 
 //#region Swords
@@ -783,7 +795,7 @@ ondals.uniqProps = [
 
 //#region Wands
 const boneshade = new wandWeapon('Boneshade', 'Lich Wand', 0, 0);
-boneshade.uniqprops = [
+boneshade.uniqProps = [
     new uniqNestProp('Skills', 'Bone Spirit', 1, 2),
     new uniqNestProp('Skills', 'Bone Spear', 2, 3),
     new uniqNestProp('Skills', 'Bone Wall', 2, 3),
@@ -791,7 +803,7 @@ boneshade.uniqprops = [
     new uniqNestProp('Skills', 'Teeth', 4, 5),
 ]
 const deathsWeb = new wandWeapon('Death\'s Web', 'Unearthed Wand', 0,0);
-deathsWeb.uniqprops = [
+deathsWeb.uniqProps = [
     new uniqProp('Enemy Poison Resist', 40, 50),
     new nonLootProp('Mana After Kill', 7, 12),
     new nonLootProp('Mana After Kill', 7, 12),
@@ -800,13 +812,56 @@ deathsWeb.uniqprops = [
 id=0
 //#endregion
 
+//#region
+const nagelRing = new ringArmor('Nagelring', 'Ring', 0,0);
+nagelRing.uniqProps = [
+    new uniqProp('Attack Rating', 50, 75),
+    new uniqProp('Magic Find', 15, 30)
+]
+const manaldHeal = new ringArmor('Manald Heal', 'Ring', 0, 0);
+manaldHeal.uniqProps = [
+    new uniqProp('Mana Steal', 4, 7),
+    new nonLootProp('Replenish Life', 5, 8)
+]
+const dwarfStar = new ringArmor('Dwarf Star', 'Ring', 0, 0);
+dwarfStar.uniqProps = [
+    new nonLootProp('Magic Damage Reduced By', 12, 15)
+    //wwwwwwwwwwwwwwwwwwwwwww
+]
+const ravenFrost = new ringArmor('Raven Frost', 'Ring', 0, 0);
+ravenFrost.uniqProps = [
+    new uniqProp('Attack Rating', 150, 250),
+    new uniqProp('Dexterity', 15, 20)
+]
+const bk = new ringArmor('Bul-Katho\'s BK', 'Ring', 0, 0);
+bk.uniqProps = [
+    new uniqProp('Life Steal', 3, 5),
+]
+const carrionWind = new ringArmor('Carrion Wind', 'Ring', 0, 0);
+carrionWind.uniqProps = [
+    new uniqProp('Life Steal', 6, 9),
+    new nonLootProp('Defense vs. Missiles', 100, 160)
+]
+const naturesPeace = new ringArmor('Nature\'s Peace', 'Ring', 0, 0);
+naturesPeace.uniqProps = [
+    new uniqProp('Poison Resist', 20, 30),
+    new uniqProp('Damage Reduced', 7, 11),
+]
+const wisp = new ringArmor('Wisp Projector', 'Ring', 0, 0);
+wisp.uniqProps = [
+    new uniqProp('Absorb Lightning Percent', 10, 20),
+    new uniqProp('Magic Find', 10, 20)
+]
+id=0;
+//#endregion
+
 uniqs.push(amaWeapons, assWeapons, barbArmors,druidArmors,
     necroArmors, paladinArmors, sorcWeapons, armorArmors,
     /*axesWeapons, */beltsArmors, bootsArmors, bowsWeapons,
     /*crossbowsWeapons, daggersWeapons, */glovesArmors, helmArmors,
     /*javelinsWeapons, macesWeapons, polearmsWeapons, sceptresWeapons,
-    shieldsArmors, spearsWeapons, stavesWeapons, swordsWeapons,
-    thorwingsWeapons, */ wandsWeapons
+    shieldsArmors, spearsWeapons, */stavesWeapons, /*swordsWeapons,
+    thorwingsWeapons, */ wandsWeapons, ringsArmors,
 );
 
 export default uniqs;

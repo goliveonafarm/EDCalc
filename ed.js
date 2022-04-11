@@ -15,6 +15,7 @@ let btnItemListIDCounter = 0;
 let txtBoxRowsIDCounter = 0;
 let buildUniqString = ``;
 let buildTradeString = ``;
+let ethTradeString = ``;
 let tradeList = ``;
 let defenseStr = ``;
 let btnItemClassIDCounter = 0;
