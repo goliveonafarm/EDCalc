@@ -15,192 +15,215 @@
 </head>
 
 <body>
-  <div class="d-flex justify-content-center">
-    <div style="padding-top:20px" class="container">
+
+  <div class="container bg-primary bg-gradient p-3" style="color: antiquewhite;">
+    <div class="row">
+      <div class="col-4  setContent">
+        <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" aria-haspopup="true"
+          aria-expanded="false">
+          <div id="setContentTextID" class="">Base</div>
+        </button>
+      </div>
+    </div>
+    <div style="padding-top: 10px;"></div>
+    <div id="baseContent">
+      <h6>Choose a base and ED to see the calculated defense -</h6>
+      <div class="row setBtnTextToCopyClass">
+        <div class="col-4">
+          <div class="dropdown">
+            <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div id="chooseArm">Choose Armor</div>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li class="dropdown-item setInputIDClass" href="#" id=467>Dusk Shroud</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=470>Wyrmhide</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=474>Scarab Husk</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=481>Wire Fleece</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=489>Diamond Mail</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=496>Loricated Mail</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=501>Great Hauberk</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=505>Boneweave</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=517>Balrog Skin</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=524>Archon Plate</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=523>Kraken Shell</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=530>Hellforge Plate</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=541>Lacquered Plate</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=557>Shadow Plate</li>
+              <li class="dropdown-item setInputIDClass" href="#" id=600>Sacred Armor</li>
+              <div class="dropdown-divider"></div>
+              <li class="dropdown-item setInputIDClass" href="#" id=261>Mage Plate</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="dropdown">
+            <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div id="edTag">Choose ED%</div>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li class="dropdown-item setEDClass" href="#">0</li>
+              <li class="dropdown-item setEDClass" href="#">1</li>
+              <li class="dropdown-item setEDClass" href="#">2</li>
+              <li class="dropdown-item setEDClass" href="#">3</li>
+              <li class="dropdown-item setEDClass" href="#">4</li>
+              <li class="dropdown-item setEDClass" href="#">5</li>
+              <li class="dropdown-item setEDClass" href="#">6</li>
+              <li class="dropdown-item setEDClass" href="#">7</li>
+              <li class="dropdown-item setEDClass" href="#">8</li>
+              <li class="dropdown-item setEDClass" href="#">9</li>
+              <li class="dropdown-item setEDClass" href="#">10</li>
+              <li class="dropdown-item setEDClass" href="#">11</li>
+              <li class="dropdown-item setEDClass" href="#">12</li>
+              <li class="dropdown-item setEDClass" href="#">13</li>
+              <li class="dropdown-item setEDClass" href="#">14</li>
+              <li class="dropdown-item setEDClass" href="#">15</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row  setBtnTextToCopyClass">
+        <div class="col-md">
+          <h6 style="padding-top:15px">
+            <div class="form-check">
+              <input class="form-check-input ethRadClass" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Ethereal
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input ethRadClass" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Non Ethereal
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input ethRadClass" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+              <label class="form-check-label" for="flexRadioDefault3">
+                Either
+              </label>
+            </div>
+          </h6>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-4  setContent">
-          <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" aria-haspopup="true"
-            aria-expanded="false">
-            <div id="setContentTextID" class="">Base</div>
-          </button>
+        <div class="col-sm">
+          <h3 id="outputID"></h3>
         </div>
       </div>
-      <div style="padding-top: 40px;"></div>
-      <div id="baseContent">
-        <h5>Choose an armor and defense modifier to see the calculated defense</h5>
-        <div class="row setBtnTextToCopyClass">
-          <div class="col-4">
-            <div class="dropdown">
-              <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div id="chooseArm">Choose Armor</div>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li class="dropdown-item setInputIDClass" href="#" id=467>Dusk Shroud</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=470>Wyrmhide</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=474>Scarab Husk</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=481>Wire Fleece</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=489>Diamond Mail</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=496>Loricated Mail</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=501>Great Hauberk</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=505>Boneweave</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=517>Balrog Skin</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=524>Archon Plate</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=523>Kraken Shell</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=530>Hellforge Plate</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=541>Lacquered Plate</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=557>Shadow Plate</li>
-                <li class="dropdown-item setInputIDClass" href="#" id=600>Sacred Armor</li>
-                <div class="dropdown-divider"></div>
-                <li class="dropdown-item setInputIDClass" href="#" id=261>Mage Plate</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="dropdown">
-              <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div id="edTag">Choose ED%</div>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li class="dropdown-item setEDClass" href="#">0</li>
-                <li class="dropdown-item setEDClass" href="#">1</li>
-                <li class="dropdown-item setEDClass" href="#">2</li>
-                <li class="dropdown-item setEDClass" href="#">3</li>
-                <li class="dropdown-item setEDClass" href="#">4</li>
-                <li class="dropdown-item setEDClass" href="#">5</li>
-                <li class="dropdown-item setEDClass" href="#">6</li>
-                <li class="dropdown-item setEDClass" href="#">7</li>
-                <li class="dropdown-item setEDClass" href="#">8</li>
-                <li class="dropdown-item setEDClass" href="#">9</li>
-                <li class="dropdown-item setEDClass" href="#">10</li>
-                <li class="dropdown-item setEDClass" href="#">11</li>
-                <li class="dropdown-item setEDClass" href="#">12</li>
-                <li class="dropdown-item setEDClass" href="#">13</li>
-                <li class="dropdown-item setEDClass" href="#">14</li>
-                <li class="dropdown-item setEDClass" href="#">15</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row  setBtnTextToCopyClass">
-          <div class="col-md">
-            <h6 style="padding-top:20px">
-              <div class="form-check">
-                <input class="form-check-input ethRadClass" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Ethereal
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input ethRadClass" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Non Ethereal
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input ethRadClass" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
-                  checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Either
-                </label>
-              </div>
-              </h5>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm">
-            <h3 id="outputID"></h3>
-          </div>
-        </div>
-        <div class="row  setBtnTextToCopyClass">
-          <div class="col-md">
-            <h6 style="padding-top:20px">
-              <input class="form-check-input genSocketStringID" type="checkbox" value="" id="0osCheckbox">
-              <label class="form-check-label" for="flexCheckDefault">
-                0 socket
-              </label>
-              <input class="form-check-input genSocketStringID" type="checkbox" value="" id="2osCheckbox">
-              <label class="form-check-label" for="flexCheckDefault">
-                2 socket
-              </label>
-              <input class="form-check-input genSocketStringID" type="checkbox" value="" id="3osCheckbox">
-              <label class="form-check-label" for="flexCheckDefault">
-                3 socket
-              </label>
-              <input class="form-check-input genSocketStringID" type="checkbox" value="" id="4osCheckbox">
-              <label class="form-check-label" for="flexCheckDefault">
-                4 socket
-              </label>
-              <input class="form-check-input playSoundID" type="checkbox" value="" id="playSoundCheckBox">
-              <label class="form-check-label" for="flexCheckDefault">
-                play sound = false
-              </label>
-            </h6>
-          </div>
-        </div>
-      </div>
-      <div id="uniqContent">
-        <div class="row setBtnTextToCopyClass">
-          <div class="col-4">
-            <div class="dropdown">
-              <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id=""
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div id="chooseClass">Choose Class</div>
-              </button>
-              <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="ulClassListID">
-              </ul>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="dropdown">
-              <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id=""
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div id="chooseItemTagID">Choose item</div>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="ulItemListID">
-              </ul>
-            </div>
-          </div>
-        </div>
-        <hr style="padding-top:10px">
-        <div id="insertRowsHere">
-        </div>
-      </div>
-      <div style="padding-top:10px" class="row">
-        <div class="col-10  setBtnTextToCopyClass">
-          <div class="form-group">
-            <label for="outputText">ItemFilter.yaml rule (you can manually edit these but do not change the
-              spacing):</label>
-            <textarea class="form-control" id="outputText" rows="6"></textarea>
-          </div>
-        </div>
-        <div class="col-2" style="padding-top:50px">
-          <button type="button" class="btn btn-primary copyTextID" id="btnCopy">Copy to clipboard</button>
-        </div>
-      </div>
-      <div style="padding-top:10px" class="row">
-        <label class="col-9" id="lblOutPutSellStringID">If you can see this something went wrong</label>
-        <button type="button" class="btn btn-primary col-3" id="btnMoveToTradeID">->Add to trade</button>
-      </div>
-      <hr style="padding-top:10px">
-      <div class="row">
-        <div style="padding-top:10px" class="col-8  setBtnTextToCopyClass">
-          <div class="form-group">
-            <textarea class="form-control" id="outputTradeText" rows="6"></textarea>
-          </div>
-        </div>
-        <div class="col-2" style="padding-top:50px">
-          <button style="padding-top:10px" type="button" class="btn btn-primary"
-            id="btnCopyClearFromClipID">Clear</button>
-        </div>
-        <div class="col-2" style="padding-top:50px">
-          <button style="padding-top:10px" type="button" class="btn btn-primary" id="btnCopyTradeClipboardID">Copy to
-            clipboard</button>
+      <div class="row  setBtnTextToCopyClass">
+        <div class="col-md">
+          <h6>
+            <input class="form-check-input genSocketStringID" type="checkbox" value="" id="0osCheckbox">
+            <label class="form-check-label" for="flexCheckDefault">
+              0 socket
+            </label>
+            <input class="form-check-input genSocketStringID" type="checkbox" value="" id="2osCheckbox">
+            <label class="form-check-label" for="flexCheckDefault">
+              2 socket
+            </label>
+            <input class="form-check-input genSocketStringID" type="checkbox" value="" id="3osCheckbox">
+            <label class="form-check-label" for="flexCheckDefault">
+              3 socket
+            </label>
+            <input class="form-check-input genSocketStringID" type="checkbox" value="" id="4osCheckbox">
+            <label class="form-check-label" for="flexCheckDefault">
+              4 socket
+            </label>
+            <input class="form-check-input playSoundID" type="checkbox" value="" id="playSoundCheckBox">
+            <label class="form-check-label" for="flexCheckDefault">
+              play sound = false
+            </label>
+          </h6>
         </div>
       </div>
     </div>
+    <div id="uniqContent">
+      <div class="row setBtnTextToCopyClass">
+        <div class="col-4">
+          <div class="dropdown">
+            <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id=""
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div id="chooseClass">Choose Class</div>
+            </button>
+            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton" id="ulClassListID">
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="dropdown">
+            <button style="width:100%" class="btn btn-secondary dropdown-toggle" type="button" id=""
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div id="chooseItemTagID">Choose item</div>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="ulItemListID">
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr style="padding-top:5px">
+      <div id="insertRowsHere">
+      </div>
+    </div>
+    <div style="padding-top:5px" class="row col-auto">
+      <div class="setBtnTextToCopyClass">
+
+        <label for="outputText">ItemFilter.yaml rule (you can manually edit these but do not change the
+          spacing):</label>
+        <textarea class="form-control" id="outputText" rows="6"></textarea>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-auto" style="padding-top:10px">
+        <button type="button" class="btn btn-success copyTextID" id="btnCopy">Copy to clipboard</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div id="lblOutPutSellStringID">If you can see this something went wrong</div>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-info" id="btnMoveToTradeID">->Add to trade thread</button>
+      </div>
+    </div>
   </div>
+
+  <div class="container bg-dark bg-gradient p-2">
+
+    <div class="row p-1">
+      <div class="text-white">Trade thread:</div>
+    </div>
+
+    <div class="row" >
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary" id="btnSortTradeThreadID">Sort alphabetically</button>
+      </div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-success" id="btnCopyTradeClipboardID">Copy to
+          clipboard</button>
+      </div>
+      <div class="col"></div>
+      <div class="col-auto">
+        <button type="button" class="btn btn-warning" id="btnCopyClearFromClipID">Clear list</button>
+      </div>
+    </div>
+
+    <div class="row justify-content-start">
+      <div style="padding-top:10px" class="col-12  setBtnTextToCopyClass">
+
+        <textarea class="form-control text-nowrap" id="outputTradeText" rows="10"></textarea>
+
+      </div>
+    </div>
+
+
+  </div>
+
+
 </body>
 
 </html>

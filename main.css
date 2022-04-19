@@ -2,3 +2,6 @@
     padding-top: 4px;
 }
 
+input[type="radio"]:checked{ 
+    background-color: black; 
+} 

@@ -22,6 +22,7 @@ let btnItemClassIDCounter = 0;
 let firstSymbolInTrade = ``;
 let lblOutPut = document.getElementById("lblOutPutSellStringID");
 let outputTradeTextBox = document.getElementById("outputTradeText");
+let btnSortTradeThreadID = document.getElementById("btnSortTradeThreadID");
 
 function clearLblTrade() {
     lblOutPut.innerHTML = ``;
@@ -248,8 +249,6 @@ document.getElementById('btnCopyClearFromClipID').addEventListener("click", func
 
 setContent();
 
-
-
 function generateUniqString(props) {
     if (props.loot) {
         if (props.type !== null) {
@@ -286,6 +285,7 @@ function setOptionTags(classItemID, itemID) {
     buildUniqString = `${uniqs[classItemID][itemID].base}:\n- Qualities: unique`
 
     buildTradeString += `${uniqs[classItemID][itemID].name} - `;
+    console.log(buildTradeString)
     scopeItem = uniqs[classItemID][itemID];
     const deleteTheseElements = document.querySelectorAll(".removableTagsClass");
     for (const elem of deleteTheseElements) {
@@ -314,8 +314,15 @@ function setOptionTags(classItemID, itemID) {
             buildUniqString += `\n  Defense: ${parseFloat(myNum) + addThisDef}`
         }
     }
+    console.log(uniqs);
     txtBoxRowsIDCounter = 0;
+
+    console.log(scopeItem.uniqProps);
+    if (scopeItem.uniqProps === null) return lblOutPut.innerHTML = scopeItem.name;
+
+
     for (const props of uniqs[classItemID][itemID].uniqProps) {
+        if (props === null) return;
         //(1)add all col to this row / create this row first
         const thisRow = document.createElement("div");
         thisRow.classList.add("row");
@@ -394,7 +401,7 @@ function setOptionTags(classItemID, itemID) {
         //Final Step - Add our row to the insertRowHere section of HTML doc
         document.getElementById("insertRowsHere").appendChild(thisRow);
 
-        generateUniqString(props, uniqs[classItemID][itemID]);
+        generateUniqString(props);
     }
 
     document.getElementById("outputText").value = buildUniqString;
@@ -450,6 +457,15 @@ function initilizer() {
         document.getElementById("ulClassListID").appendChild(liItem);
     }
 }
+function sortTradeBox(){
+    let thisStr = outputTradeTextBox.value;
+    let splitUp = thisStr.split(`\n`);
+    splitUp.sort();
+    outputTradeTextBox.value = ``;
+    for(const elem of splitUp){
+        if(elem !== ``) outputTradeTextBox.value += `${elem}\n`
+    }
+}
 
-
+btnSortTradeThreadID.addEventListener("click", sortTradeBox);
 initilizer();
