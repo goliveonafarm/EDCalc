@@ -350,7 +350,7 @@ demonHorn.uniqProps = [
     new uniqNestProp(`Class Skill Tree`, `Barbarian Combat Skills`, 1, 3)
 ]
 
-const halaberds = new barbArmor('Halaberds reign', 'Conqueror Crown', 159, 170);
+const halaberds = new barbArmor('Halaberds Reign', 'Conqueror Crown', 159, 170);
 halaberds.uniqProps = [
     new nonLootProp('Enhanced Defense %', 140, 170),
     new nonLootProp('Replenish Life', 15, 23),
@@ -741,14 +741,12 @@ const crownOfAges = new helmArmor('Crown of Ages', 'Corona', 165, 0);
 crownOfAges.uniqProps = [
     new uniqProp('Defense', 349, 399),
     new nonLootProp('Damage Reduced By %', 10, 15),
-    new uniqProp('All Resist', 20, 30),
-    new uniqProp('Sockets', 1, 2),
+    new uniqProp('All Resist', 20, 30)
 ]
 const giantSkull = new helmArmor('Giant Skull', 'Bone Visage', 157, 0);
 giantSkull.uniqProps = [
     new uniqProp('Defense', 350, 477),
-    new uniqProp('Strength', 25, 35),
-    new uniqProp('Sockets', 1, 2)
+    new uniqProp('Strength', 25, 35)
 ]
 const kiras = new helmArmor('Kira\'s Guardian', 'Tiara', 50, 0);
 kiras.uniqProps = [

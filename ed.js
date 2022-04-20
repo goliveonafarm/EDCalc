@@ -15,14 +15,21 @@ let btnItemListIDCounter = 0;
 let txtBoxRowsIDCounter = 0;
 let buildUniqString = ``;
 let buildTradeString = ``;
-let ethTradeString = ``;
+let newSocketTracker = 0;
+let newEthTracker = ``;
 let tradeList = ``;
 let defenseStr = ``;
 let btnItemClassIDCounter = 0;
 let firstSymbolInTrade = ``;
+let newSocketString = ``;
+let newDefString = ``;
 let lblOutPut = document.getElementById("lblOutPutSellStringID");
 let outputTradeTextBox = document.getElementById("outputTradeText");
 let btnSortTradeThreadID = document.getElementById("btnSortTradeThreadID");
+let arrRadSocketBtns = document.querySelectorAll('.classSocketQuery');
+let arrRadEthBtns = document.querySelectorAll('.classEthQuery');
+
+
 
 function clearLblTrade() {
     lblOutPut.innerHTML = ``;
@@ -100,7 +107,8 @@ function calcDef() {
 function setText() {
     let buildString = `${armorName}:${stringifyOutputDefense}${socketString}${stringifyOutputEth}${playSoundFalse}`;
     document.getElementById("outputText").value = buildString;
-
+    let tempEthString = (ethValue == 1.5) ? `Eth ` : ``;
+    lblOutPut.innerHTML = `${newSocketString}${tempEthString}${armorName} - ${output} Defense`;
 }
 
 function copyText() {
@@ -121,7 +129,7 @@ function copyTradeText() {
 
 function genSocketString() {
     socketString = "";
-
+    newSocketString = "";
     let btnCheck0 = document.getElementById("0osCheckbox");
     let btnCheck2 = document.getElementById("2osCheckbox");
     let btnCheck3 = document.getElementById("3osCheckbox");
@@ -160,10 +168,13 @@ function genSocketString() {
     socketString = socketString.concat(...arr);
     socketString = `
     Sockets: [${socketString}]`;
-
+    let tempTune = ``;
     if (flag == false) {
         socketString = ``;
+        tempTune = `0`;
+
     }
+    newSocketString += `${tempTune}${newSocketString.concat(...arr)} OS `
 
     setText();
 }
@@ -282,9 +293,23 @@ let grab3 = null;
 function setOptionTags(classItemID, itemID) {
     clearLblTrade();
     document.getElementById("outputText").value = ``;
+    //Item name declared here into string
     buildUniqString = `${uniqs[classItemID][itemID].base}:\n- Qualities: unique`
 
+    //come back - add ethereal to uniq string
     buildTradeString += `${uniqs[classItemID][itemID].name} - `;
+    //come back - add ethereal to trade string
+    //come back - add sockets to trade string
+    if (newSocketTracker !== 0) {
+        buildTradeString += `${newSocketTracker} Socket /`;
+        buildUniqString += `\n  Sockets: [${newSocketTracker}]`;
+    }
+    let ethBaseMultiplier = 1.0;
+    if (newEthTracker === `Ethereal`) {
+        buildTradeString += ` Ethereal /`;
+        buildUniqString += `\n  Ethereal: true`;
+        ethBaseMultiplier = 1.5
+    }
     console.log(buildTradeString)
     scopeItem = uniqs[classItemID][itemID];
     const deleteTheseElements = document.querySelectorAll(".removableTagsClass");
@@ -292,20 +317,21 @@ function setOptionTags(classItemID, itemID) {
         elem.remove();
     }
 
-    let myNum = ((parseFloat(scopeItem.baseDef) + 1) * ((parseFloat(scopeItem.ed) + 100) / 100));
+    let myNum = ((parseFloat(scopeItem.baseDef * ethBaseMultiplier) + 1) * ((parseFloat(scopeItem.ed) + 100) / 100));
     myNum = Math.floor(myNum);
-    console.log(`line 296: scopeItem.ed: ${scopeItem.ed} scopeItem.BaseDef${scopeItem.baseDef} myNum: ${myNum}`);
+    console.log(``)
+    console.log(`line 316: scopeItem.ed: ${scopeItem.ed} scopeItem.BaseDef${scopeItem.baseDef} myNum: ${myNum}`);
     //Defense is controlled here
 
     let addThisDef = 0.0;
-    if (scopeItem.hasOwnProperty('addDef')){
+    if (scopeItem.hasOwnProperty('addDef')) {
         console.log(`hit: scopeItem.addDef = ${scopeItem.addDef}`);
         addThisDef = parseFloat(scopeItem.addDef);
     }
 
     if (scopeItem.ed !== 0) {
         if (scopeItem.hasOwnProperty('baseDef')) {
-            defenseStr = `Defense ${parseFloat(myNum) + addThisDef} /`
+            defenseStr = ` Defense ${parseFloat(myNum) + addThisDef} /`
         }
 
         buildTradeString += defenseStr;
@@ -319,6 +345,8 @@ function setOptionTags(classItemID, itemID) {
 
     console.log(scopeItem.uniqProps);
     if (scopeItem.uniqProps === null) return lblOutPut.innerHTML = scopeItem.name;
+
+
 
 
     for (const props of uniqs[classItemID][itemID].uniqProps) {
@@ -363,7 +391,7 @@ function setOptionTags(classItemID, itemID) {
         //txtBoxInputControl.placeholder = `${props.userValue}`
         //pullUserValue.innerHTML = "we changed it";
 
-        if (props.attrName == 'Defense'){
+        if (props.attrName == 'Defense') {
             scopeItem.addDef = parseFloat(props.userValue);
         }
 
@@ -390,7 +418,7 @@ function setOptionTags(classItemID, itemID) {
         txtBoxInputControl.addEventListener("keyup", function () {
             let e = document.querySelector(`#${this.id}`).value;
             props.userValue = e;
-            setOptionTags(grab, grab2, grab3);
+            setOptionTags(grab, grab2);
             let g = document.querySelector(`#${this.id}`);
             g.setSelectionRange(3, 3);
             g.focus();
@@ -433,7 +461,6 @@ function genItemListBtn(classItemID) {
             setOptionTags(classItemID, this.id);
         })
         document.getElementById("ulItemListID").appendChild(liItem);
-
     }
 }
 
@@ -457,15 +484,32 @@ function initilizer() {
         document.getElementById("ulClassListID").appendChild(liItem);
     }
 }
-function sortTradeBox(){
+function sortTradeBox() {
     let thisStr = outputTradeTextBox.value;
     let splitUp = thisStr.split(`\n`);
     splitUp.sort();
     outputTradeTextBox.value = ``;
-    for(const elem of splitUp){
-        if(elem !== ``) outputTradeTextBox.value += `${elem}\n`
+    for (const elem of splitUp) {
+        if (elem !== ``) outputTradeTextBox.value += `${elem}\n`
     }
 }
 
+arrRadSocketBtns.forEach(elemt => {
+    elemt.addEventListener("click", function () {
+        newSocketTracker = parseInt(this.parentElement.innerText);
+        setOptionTags(grab, grab2);
+    })
+});
+
+arrRadEthBtns.forEach(elemt => {
+    elemt.addEventListener("click", function () {
+        newEthTracker = this.parentElement.innerText;
+        console.log(newEthTracker);
+        setOptionTags(grab, grab2);
+    })
+});
 btnSortTradeThreadID.addEventListener("click", sortTradeBox);
 initilizer();
+const addHrLine = document.createElement("hr");
+addHrLine.style.paddingTop = `5px`;
+document.getElementById("insertRowsHere").appendChild(addHrLine);
