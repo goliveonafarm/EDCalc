@@ -922,4 +922,5 @@ uniqs.push(amaWeapons, assWeapons, barbArmors, druidArmors,
     thorwingsWeapons, */ wandsWeapons, ringsArmors, amuletsArmors
 );
 
+
 export default uniqs;

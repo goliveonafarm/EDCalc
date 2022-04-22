@@ -22,14 +22,11 @@ let defenseStr = ``;
 let btnItemClassIDCounter = 0;
 let firstSymbolInTrade = ``;
 let newSocketString = ``;
-let newDefString = ``;
 let lblOutPut = document.getElementById("lblOutPutSellStringID");
 let outputTradeTextBox = document.getElementById("outputTradeText");
 let btnSortTradeThreadID = document.getElementById("btnSortTradeThreadID");
 let arrRadSocketBtns = document.querySelectorAll('.classSocketQuery');
 let arrRadEthBtns = document.querySelectorAll('.classEthQuery');
-
-
 
 function clearLblTrade() {
     lblOutPut.innerHTML = ``;
@@ -45,7 +42,6 @@ function setContent() {
         x.style.display = "block";
         y.style.display = "none";
         document.getElementById("setContentTextID").innerText = `Uniques`;
-
     } else {
         x.style.display = "none";
         y.style.display = "block";
@@ -72,16 +68,13 @@ function setNewEth(_inputIDEth) {
 
 function setInputID(_inputID) {
     inputID = _inputID;
-
     armorName = document.getElementById(inputID).innerHTML;
     document.getElementById("chooseArm").innerText = armorName;
-
     calcDef()
 }
 
 function setED(_ed) {
     ed = _ed;
-
     if (ed == 0) {
         document.getElementById("edTag").innerText = "Max defense - non ED%";
         isSup = 0;
@@ -94,12 +87,10 @@ function setED(_ed) {
 }
 
 function calcDef() {
-
     if (inputID !== null) {
         output = Math.floor((((parseFloat(inputID) + isSup) * ethValue) * (1 + (parseFloat(ed) * 0.01))));
         stringifyOutputDefense = `\n  - Defense: ${output}`
         document.getElementById("outputID").innerText = "Defense: " + output;
-
     }
     setText();
 }
@@ -108,6 +99,9 @@ function setText() {
     let buildString = `${armorName}:${stringifyOutputDefense}${socketString}${stringifyOutputEth}${playSoundFalse}`;
     document.getElementById("outputText").value = buildString;
     let tempEthString = (ethValue == 1.5) ? `Eth ` : ``;
+    if (newSocketString === ``) {
+        newSocketString = `0 OS `
+    }
     lblOutPut.innerHTML = `${newSocketString}${tempEthString}${armorName} - ${output} Defense`;
 }
 
@@ -115,7 +109,6 @@ function copyText() {
     let copiedText = document.getElementById("outputText");
     copiedText.select();
     document.execCommand("copy");
-
     document.getElementById("btnCopy").innerText = "Copied!"
 }
 
@@ -123,7 +116,6 @@ function copyTradeText() {
     let copiedText = document.getElementById("outputTradeText");
     copiedText.select();
     document.execCommand("copy");
-
     document.getElementById("btnCopyTradeClipboardID").innerText = "Copied!"
 }
 
@@ -172,7 +164,6 @@ function genSocketString() {
     if (flag == false) {
         socketString = ``;
         tempTune = `0`;
-
     }
     newSocketString += `${tempTune}${newSocketString.concat(...arr)} OS `
 
@@ -191,7 +182,6 @@ function playSound() {
     else {
         playSoundFalse = ``;
     }
-
     setText();
 }
 
@@ -268,7 +258,6 @@ function generateUniqString(props) {
         if (props.type == null) {
             buildUniqString += `\n  `
         }
-
         buildUniqString += `${props.attrName}: `;
         buildUniqString += `${props.userValue}`;
     }
@@ -288,7 +277,6 @@ function generateUniqString(props) {
 let grab = null;
 let grab2 = null;
 let grab3 = null;
-
 
 function setOptionTags(classItemID, itemID) {
     clearLblTrade();
@@ -328,7 +316,6 @@ function setOptionTags(classItemID, itemID) {
         console.log(`hit: scopeItem.addDef = ${scopeItem.addDef}`);
         addThisDef = parseFloat(scopeItem.addDef);
     }
-
     if (scopeItem.ed !== 0) {
         if (scopeItem.hasOwnProperty('baseDef')) {
             defenseStr = ` Defense ${parseFloat(myNum) + addThisDef} /`
@@ -345,9 +332,6 @@ function setOptionTags(classItemID, itemID) {
 
     console.log(scopeItem.uniqProps);
     if (scopeItem.uniqProps === null) return lblOutPut.innerHTML = scopeItem.name;
-
-
-
 
     for (const props of uniqs[classItemID][itemID].uniqProps) {
         if (props === null) return;
